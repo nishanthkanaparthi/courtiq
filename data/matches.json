@@ -148,5 +148,128 @@
     "currentSetIndex": 0,
     "currentGameIndex": 0,
     "winner": null
+  },
+  {
+    "id": "1943c052-b969-4bba-80fb-cbfa49fd57c9",
+    "playerId": "player-1",
+    "opponentName": "Test Opponent",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-12T21:43:06.600Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "9f1e371d-2b5e-47e0-bcca-58e1abcb2e12",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "7b4bc931-5615-4485-adb1-3ff00e62cd69",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "7b30b0e8-1056-4589-9d87-9b9460d8c4ad",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-12T21:43:06.602Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 0
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 0,
+        "opponentGamesWon": 0,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 0,
+    "currentGameIndex": 0,
+    "winner": null
+  },
+  {
+    "id": "9cc4fb74-5510-4841-b33d-fbe4f0bdaf20",
+    "playerId": "player-1",
+    "opponentName": "Test Opponent",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-12T21:46:42.291Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "4062cfc0-1cb4-44b9-992f-8ed03110edad",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "4d1e0799-50be-483e-a487-b15d1329123b",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "d2f05587-9a10-4038-8d0e-c740cd24d445",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-12T21:46:42.294Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 0
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 0,
+        "opponentGamesWon": 0,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 0,
+    "currentGameIndex": 0,
+    "winner": null
+  },
+  {
+    "id": "8b539bac-069e-487c-a88e-983fa5d4c2de",
+    "playerId": "player-1",
+    "opponentName": "Test Opponent",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-12T21:55:04.863Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "0e474c86-a412-4459-8046-5b6bc9adc75c",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "025f42c4-25b8-49e7-8559-f7d7dfdb3ff7",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "f5cb2a54-f66b-4550-98cb-b96d995b20d5",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-12T21:55:04.865Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 0
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 0,
+        "opponentGamesWon": 0,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 0,
+    "currentGameIndex": 0,
+    "winner": null
   }
 ]

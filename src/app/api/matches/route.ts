@@ -2,11 +2,13 @@
 
 import { NextResponse } from 'next/server';
 import { createMatch } from '@/features/matches/types';
-import { JsonMatchRepository } from '@/lib/repositories/match-repository';
+import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 
-const repository = new JsonMatchRepository();
+function getRepository(): MatchRepository {
+  return new JsonMatchRepository();
+}
 
-export async function POST(request: Request) {
+export async function handleCreateMatch(request: Request, repository: MatchRepository) {
   const body = await request.json();
 
   if (typeof body.playerId !== 'string' || body.playerId.trim() === '') {
@@ -20,4 +22,8 @@ export async function POST(request: Request) {
   await repository.save(match);
 
   return NextResponse.json(match, { status: 201 });
+}
+
+export async function POST(request: Request) {
+  return handleCreateMatch(request, getRepository());
 }
