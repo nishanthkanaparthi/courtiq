@@ -558,5 +558,2079 @@
     "currentSetIndex": 0,
     "currentGameIndex": 0,
     "winner": null
+  },
+  {
+    "id": "696c16b4-fad9-4120-a35c-28c3321a82d4",
+    "playerId": "coach-player-1",
+    "opponentName": "Nishanth",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-15T14:19:42.572Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "d8a96d6d-bf29-4e41-baf5-12c02cf5fa21",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "2ff637db-d648-4075-8abe-a8c13edbeb25",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "317fecf4-f619-46ad-a0ca-65fcb15074bb",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:46.032Z"
+              },
+              {
+                "id": "c09739d4-6117-44d6-b16e-1758d74f5a35",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:46.348Z"
+              },
+              {
+                "id": "46e4a7cd-9fd9-44cd-b7fd-9733d74b9085",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:19:47.864Z"
+              },
+              {
+                "id": "b46523c3-5e2d-4a6f-bda8-301f3611ef73",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:48.852Z"
+              },
+              {
+                "id": "b067e1cb-d84c-4afb-a6d3-90ab4da61b6d",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:19:49.454Z"
+              },
+              {
+                "id": "b01534d2-bb04-484c-950a-d4c7b2d08310",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:49.834Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 30
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "e99946dc-31e4-4284-b1a5-03f605f82151",
+            "gameNumber": 2,
+            "points": [
+              {
+                "id": "0e0a2e26-5073-4d7e-a78c-f00c4cd60115",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:54.387Z"
+              },
+              {
+                "id": "8a24b27a-cb64-4658-a7cd-462556e69e82",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:54.935Z"
+              },
+              {
+                "id": "cdb5883f-e9d5-4243-a657-2a0e62ba1471",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:19:56.053Z"
+              },
+              {
+                "id": "9af38b8f-db6b-4e46-8d50-b7ca7bff347d",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:19:56.372Z"
+              },
+              {
+                "id": "18e0d859-3b1f-459d-b9ec-2f3a6928f79b",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:58.165Z"
+              },
+              {
+                "id": "fec640b9-03c5-4723-a7fb-63b17911228c",
+                "pointNumber": 6,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:19:59.165Z"
+              },
+              {
+                "id": "65d72fce-273e-40a8-9de6-303444027d4f",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:19:59.808Z"
+              },
+              {
+                "id": "421d50cc-e107-48ac-aaae-63460a385c0f",
+                "pointNumber": 8,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:01.417Z"
+              }
+            ],
+            "score": {
+              "player": "Adv",
+              "opponent": 40
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "15ff7595-8ffd-4cef-b579-b349c24b5e11",
+            "gameNumber": 3,
+            "points": [
+              {
+                "id": "7f5dac0e-0656-4a0f-bd8c-4bc4ef59f383",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:04.416Z"
+              },
+              {
+                "id": "3830c31f-26f9-4da9-b7fc-d5b8ef540152",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:05.133Z"
+              },
+              {
+                "id": "e4950dec-675e-452b-8a9c-a835baf747ec",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:05.720Z"
+              },
+              {
+                "id": "d0211f1c-880b-47d4-abf7-cc0f29417081",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:06.132Z"
+              },
+              {
+                "id": "9ea7a4cf-8baf-4b35-98fb-e17112c608e5",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:06.681Z"
+              },
+              {
+                "id": "b81fb996-58de-4759-8462-663b4510e88e",
+                "pointNumber": 6,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:07.068Z"
+              }
+            ],
+            "score": {
+              "player": 30,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "9821b210-9bb0-4eb6-9502-87e6b569814f",
+            "gameNumber": 4,
+            "points": [
+              {
+                "id": "cffd2370-d7dd-4e65-9846-e79ff551b1ce",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:08.013Z"
+              },
+              {
+                "id": "67439a0e-4982-42a7-b453-6db968475233",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:08.320Z"
+              },
+              {
+                "id": "b1be11c0-4bda-4357-85e1-4cad0febe716",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:08.822Z"
+              },
+              {
+                "id": "0d120e13-f05c-4552-9dc3-66311b410282",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:09.531Z"
+              },
+              {
+                "id": "20cfc1b5-995c-4578-bab4-fd1f81caac0a",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:09.965Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "65c653f4-45e4-4156-ba18-0ec93ddc8f5f",
+            "gameNumber": 5,
+            "points": [
+              {
+                "id": "b2be7ed3-0064-4fa7-8f2b-ab2b00a15402",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:15.130Z"
+              },
+              {
+                "id": "b563b3a6-04ce-4132-8ac2-52e980250dc4",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:15.931Z"
+              },
+              {
+                "id": "66cc38b1-32da-40b4-a6d0-e1e871d6b568",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:16.292Z"
+              },
+              {
+                "id": "6045899b-af7f-4951-8394-26a2bc0f90de",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:16.963Z"
+              },
+              {
+                "id": "b9c5370c-c7a8-435f-afb6-15876ad5d679",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:18.164Z"
+              },
+              {
+                "id": "2c9235ca-2ab6-4049-a1a9-73e793f2a88c",
+                "pointNumber": 6,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:19.483Z"
+              },
+              {
+                "id": "299ada8d-c410-4344-bbf2-106f624e9d70",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:20.033Z"
+              },
+              {
+                "id": "6ea730e6-c553-4fca-bcd3-0a841c6fe0ae",
+                "pointNumber": 8,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:21.054Z"
+              },
+              {
+                "id": "3380b4da-a87a-4079-a8fd-7e0deb6de38f",
+                "pointNumber": 9,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:21.965Z"
+              },
+              {
+                "id": "7965ed99-a2cc-4db5-b37a-e56bb1361fb0",
+                "pointNumber": 10,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:22.865Z"
+              }
+            ],
+            "score": {
+              "player": "Adv",
+              "opponent": 40
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "3228816a-247f-4b08-a83f-bc02d5bd2963",
+            "gameNumber": 6,
+            "points": [
+              {
+                "id": "20f696c6-c28b-44b7-977c-873fed00cf6c",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:25.315Z"
+              },
+              {
+                "id": "e7702fa4-b218-4c4d-8e7e-170b7737bcd3",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:25.833Z"
+              },
+              {
+                "id": "bdcbb599-9fc4-4788-92e9-b3456f903125",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:26.332Z"
+              },
+              {
+                "id": "6684fef5-4dc2-4c05-85d7-0dde3b86750e",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:26.747Z"
+              },
+              {
+                "id": "98d1b9d8-8473-488e-9f7d-d5e7790a71f3",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:27.212Z"
+              },
+              {
+                "id": "87b3b2d8-e712-48e8-8e07-e8eb40541fed",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:27.750Z"
+              },
+              {
+                "id": "4518e96a-ed90-4541-80a1-a12f3f9b4177",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:28.150Z"
+              },
+              {
+                "id": "8ed64b1b-9d2c-4c85-b4bc-e5f3c461634a",
+                "pointNumber": 8,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:28.713Z"
+              }
+            ],
+            "score": {
+              "player": "Adv",
+              "opponent": 40
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "770a88cf-0fc1-4914-852b-585f624c5358",
+            "gameNumber": 7,
+            "points": [
+              {
+                "id": "f23d1627-2cfe-4fdf-8480-23352d84e8b3",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:30.953Z"
+              },
+              {
+                "id": "0c89eab9-511e-4a8e-ac60-818c594625d3",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:31.349Z"
+              },
+              {
+                "id": "f7247a3d-c5f1-4c6e-9d7f-1371f4dd2bf9",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:31.813Z"
+              },
+              {
+                "id": "05127bef-d82d-4567-941f-833fb14ffdf3",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:32.200Z"
+              },
+              {
+                "id": "e1bbd5bd-a712-4906-9ffb-c894e860e559",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:44.799Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 15
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "7fd94d20-9d9e-450d-bdff-2bd38e2da7f1",
+            "gameNumber": 8,
+            "points": [
+              {
+                "id": "37014e98-bfbc-4be0-b004-a184fd23e039",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:46.289Z"
+              },
+              {
+                "id": "37ed70fe-4a57-4559-b748-211b3b921a44",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:46.567Z"
+              },
+              {
+                "id": "8f88353f-b034-48e2-84ee-2db0697acce0",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:46.942Z"
+              },
+              {
+                "id": "6c9ddc93-b5f8-4d84-bd3f-1d8df6313974",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:47.216Z"
+              },
+              {
+                "id": "ac16856e-eba1-4d88-84d3-58e3f229cd22",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:47.518Z"
+              },
+              {
+                "id": "92c1224e-4059-4205-b010-c4b29ed54ce7",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:47.964Z"
+              },
+              {
+                "id": "eb590a66-d33a-4217-8a10-38c46de619c7",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:48.566Z"
+              },
+              {
+                "id": "c98e39bc-4e31-405d-a14c-41b66bea6f2f",
+                "pointNumber": 8,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:49.545Z"
+              },
+              {
+                "id": "a3746aa4-9b63-4986-8e6e-d968580dd0a4",
+                "pointNumber": 9,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:50.486Z"
+              },
+              {
+                "id": "0a364047-8ecc-4138-9a22-3786115fc955",
+                "pointNumber": 10,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:51.104Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": "Adv"
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "455c3485-fdd8-4c2a-8dc2-f76b9402c18e",
+            "gameNumber": 9,
+            "points": [
+              {
+                "id": "47088a18-40f4-4e1b-81b2-d034b3c1e9fa",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:53.262Z"
+              },
+              {
+                "id": "183e4aa9-c169-400d-93dc-6ea7b6205693",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:53.682Z"
+              },
+              {
+                "id": "22fe4921-5b99-4f1d-a8b7-469f043d7d1b",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:54.062Z"
+              },
+              {
+                "id": "99f9aa77-c560-4f81-9dc6-661733e49d5c",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:54.420Z"
+              },
+              {
+                "id": "fa6fafff-c0bb-420d-8acd-3569badc192d",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:54.686Z"
+              },
+              {
+                "id": "0f8d63d9-dda0-4676-bbf7-5f094b8153e1",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:54.864Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 30
+            },
+            "winner": "player",
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 6,
+        "opponentGamesWon": 3,
+        "winner": "player"
+      },
+      {
+        "id": "4605fc27-f7cd-4741-9087-96ba919e9ddc",
+        "setNumber": 2,
+        "games": [
+          {
+            "id": "4c06557d-6c08-4a6f-ba83-988cb684ebde",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "c883fed2-21d3-47bb-8471-605c79557ad7",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:55.217Z"
+              },
+              {
+                "id": "2889d100-7def-4fbf-81b6-af6de6ab4ffa",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:55.599Z"
+              },
+              {
+                "id": "90c382ea-6bd7-4e35-b62f-202e44bcf4b5",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:55.781Z"
+              },
+              {
+                "id": "5923914c-38b8-4470-a6f0-2f405a6d5a4e",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:55.914Z"
+              },
+              {
+                "id": "3d600231-134b-4bd1-8728-904be4a6bfc5",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:20:56.389Z"
+              },
+              {
+                "id": "d0af0e59-89a8-40c8-8052-82992afc1e78",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:20:56.724Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 30
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "20d77e22-7218-4894-ab4b-c2d78cfd71ea",
+            "gameNumber": 2,
+            "points": [],
+            "score": {
+              "player": 0,
+              "opponent": 0
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 1,
+        "opponentGamesWon": 0,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 1,
+    "currentGameIndex": 1,
+    "winner": null
+  },
+  {
+    "id": "e15e9ba8-be88-4fac-82eb-438a4e4c2d76",
+    "playerId": "coach-player-1",
+    "opponentName": "nish",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-15T14:26:13.234Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "f58a127c-a833-4a5e-9c8b-e9ba8511c3ef",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "110f23d4-af38-4de1-ab19-81a8d6c924e9",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "7cf8bb47-e0b8-4360-80e1-8df9d3eb8d16",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:17.029Z"
+              },
+              {
+                "id": "25526f94-6831-48b4-9479-9eda5f5c31dc",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:17.313Z"
+              },
+              {
+                "id": "7a71d11a-37e1-412c-bcae-9e8e30a42196",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:17.500Z"
+              },
+              {
+                "id": "170cd6e0-5c83-44b1-9cef-d5d783a8ca10",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:17.980Z"
+              },
+              {
+                "id": "b5f85233-c6e7-49e1-b493-5e6e700427ef",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:18.369Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 15
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "876f6f29-cbde-4721-a199-d61d19588cb8",
+            "gameNumber": 2,
+            "points": [
+              {
+                "id": "1e06a351-e667-4349-b31c-bb696f856ab0",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:18.811Z"
+              },
+              {
+                "id": "8914f239-682d-4f8a-8563-941f01467bb3",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:19.172Z"
+              },
+              {
+                "id": "c9b8d49c-356e-4d63-853b-5452784f9b21",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:19.348Z"
+              },
+              {
+                "id": "89247b7b-6515-424a-833c-3a5c55848c88",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:19.716Z"
+              },
+              {
+                "id": "24d6e70c-8d33-444c-85cc-ed95af5a2f9d",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:20.181Z"
+              },
+              {
+                "id": "fdb71a6c-843b-4b42-9e25-9f730c4c8d32",
+                "pointNumber": 6,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:20.485Z"
+              },
+              {
+                "id": "48d8e724-02e6-4479-8420-be6a1acd70a4",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:21.084Z"
+              },
+              {
+                "id": "ae098182-c86b-422e-bcf7-d52c49df31bc",
+                "pointNumber": 8,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:21.798Z"
+              },
+              {
+                "id": "f54791e6-ee8a-4bcb-b370-9b405de0ac84",
+                "pointNumber": 9,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:22.263Z"
+              },
+              {
+                "id": "f5410845-51bc-4667-b5b5-f203e910f570",
+                "pointNumber": 10,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:22.862Z"
+              },
+              {
+                "id": "62e4443b-0998-4c0a-b544-d083ebd5da8e",
+                "pointNumber": 11,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:23.346Z"
+              },
+              {
+                "id": "c9479788-d3a0-4804-8306-f406435bdc42",
+                "pointNumber": 12,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:23.780Z"
+              }
+            ],
+            "score": {
+              "player": "Adv",
+              "opponent": 40
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "e8f0d89c-7bdb-4e99-8f0a-391fc9d15885",
+            "gameNumber": 3,
+            "points": [
+              {
+                "id": "ddbdfa6e-0a53-4dc3-939e-4b8f874426ba",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:24.945Z"
+              },
+              {
+                "id": "55907213-98a1-4861-9c01-bb6523743b54",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:25.361Z"
+              },
+              {
+                "id": "0b1ab9f2-d0ac-4efb-b154-ffbf06a8a8d3",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:25.779Z"
+              },
+              {
+                "id": "36a4fc36-0ec5-4a0f-9f4c-5491b43fade7",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:26.112Z"
+              },
+              {
+                "id": "ac1f024a-2242-4ee8-936e-9a9ca2d5dcd6",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:26.548Z"
+              },
+              {
+                "id": "a0e8a196-883f-4ee3-aeea-1ebbd176db3e",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:26.890Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 30
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "71961895-63e6-4ee1-a299-cbce6460035f",
+            "gameNumber": 4,
+            "points": [
+              {
+                "id": "3077daa3-c764-4c13-9d7a-65cc5559cf64",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:27.048Z"
+              },
+              {
+                "id": "c96a9cb8-b91d-483d-9e17-1557b9031d1e",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:27.228Z"
+              },
+              {
+                "id": "8a8a5f5c-0273-4b6e-b08f-92b3142a53b5",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:27.400Z"
+              },
+              {
+                "id": "217956ab-5411-430e-9b66-e673015a728d",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:27.546Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "a4304edf-0d6d-4bc1-864e-e5b63369bcff",
+            "gameNumber": 5,
+            "points": [
+              {
+                "id": "1d7ff0bc-a4e8-4f6e-9290-6940982d3896",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:27.695Z"
+              },
+              {
+                "id": "03bca521-118f-4c98-9a2e-691a84da5b57",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:27.864Z"
+              },
+              {
+                "id": "bb3e1b9b-7ef4-4512-b996-1c44da770cc3",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:28.170Z"
+              },
+              {
+                "id": "adc55d5c-f63e-4ef5-93fc-9b55e5564531",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:28.362Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "8831e268-0d7f-42d6-a9d8-cf5c032b1011",
+            "gameNumber": 6,
+            "points": [
+              {
+                "id": "583af845-c39d-45e8-83ae-8f0c45776a80",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:28.531Z"
+              },
+              {
+                "id": "ea1a9d9a-207a-4679-91b3-29d270ad9210",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:28.714Z"
+              },
+              {
+                "id": "39dff573-1f87-4ec8-b417-ef8468b47403",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:29.318Z"
+              },
+              {
+                "id": "ae181829-7626-4f88-95a0-d5cac1e47848",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:29.564Z"
+              },
+              {
+                "id": "a1da0c9f-1617-4df7-bfb3-4069dd4d1b67",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:29.796Z"
+              },
+              {
+                "id": "deba2d32-9610-4d53-9c88-5c1f7c0160a3",
+                "pointNumber": 6,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:30.496Z"
+              }
+            ],
+            "score": {
+              "player": 30,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "a468b7bb-a3b5-4044-aa9d-b0560509b0e2",
+            "gameNumber": 7,
+            "points": [
+              {
+                "id": "db9e6287-92c6-44ac-a11c-83e662888c29",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:30.695Z"
+              },
+              {
+                "id": "73b66019-4f26-4dfe-818c-ed54c2dcc849",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:31.178Z"
+              },
+              {
+                "id": "aaf9a42e-0860-4b0b-bb2a-62c764df4771",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:31.362Z"
+              },
+              {
+                "id": "72daae91-0e82-4f36-af95-960129579684",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:31.517Z"
+              },
+              {
+                "id": "04040713-0efe-49f2-b8a2-fa2ea667994f",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:31.663Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 15
+            },
+            "winner": "player",
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 6,
+        "opponentGamesWon": 1,
+        "winner": "player"
+      },
+      {
+        "id": "e44f905d-0459-4f9f-b5d7-fecc0af05689",
+        "setNumber": 2,
+        "games": [
+          {
+            "id": "b994561d-5b5e-437f-a540-45c5e4c59578",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "431fbade-f904-47cf-bb93-dd5a79fed3c2",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:32.047Z"
+              },
+              {
+                "id": "be694df8-9100-4959-9866-dd996f8482d8",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:32.379Z"
+              },
+              {
+                "id": "a03f3ad9-5f6d-4994-9173-d931dedd0f25",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:32.562Z"
+              },
+              {
+                "id": "b762874b-2008-4afa-a371-bba5a8efa66e",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:32.827Z"
+              },
+              {
+                "id": "d9fab150-2ed4-4e78-a69c-d2330db44589",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:33.160Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 15
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "c2aa5e93-c734-4dcb-8f6a-524cc5d7df41",
+            "gameNumber": 2,
+            "points": [
+              {
+                "id": "7efc9735-c00a-44a0-a49a-5b5513c1dc0c",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:34.060Z"
+              },
+              {
+                "id": "0037af37-7580-4812-b309-c6d19bf8b21c",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:34.279Z"
+              },
+              {
+                "id": "7a3d36f8-33ab-4fd4-99df-4ba896652edf",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:34.463Z"
+              },
+              {
+                "id": "80b63769-a09f-4a4e-a841-a72fee20c197",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:34.725Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "d22d0ebb-4401-431b-bd64-5bc0e1ed1f72",
+            "gameNumber": 3,
+            "points": [
+              {
+                "id": "1e297c55-3ba8-4baf-bf6d-d11591d8595e",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:35.145Z"
+              },
+              {
+                "id": "60c098b3-971d-4487-a2d4-8ca4d96645eb",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:35.392Z"
+              },
+              {
+                "id": "5832e5c8-0553-4f7a-8ebb-722e88633242",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:35.545Z"
+              },
+              {
+                "id": "517b21fd-a733-43a2-9458-d5a769d97107",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:35.713Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "aca9517b-a3b7-4b50-830b-42eccfd8f3a7",
+            "gameNumber": 4,
+            "points": [
+              {
+                "id": "4e2334a1-a0bb-4c21-b0f6-a96bb7e51009",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:36.144Z"
+              },
+              {
+                "id": "4374aeb3-8bc5-4c3a-a9e1-b70f361dace2",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:36.532Z"
+              },
+              {
+                "id": "62b6ee25-1933-470e-a79f-e67fdf4cdbcd",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:36.731Z"
+              },
+              {
+                "id": "b0313cb6-a11e-4d44-b87c-8b30e2ebf309",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:36.895Z"
+              },
+              {
+                "id": "57336bba-f33e-4d79-9a2e-7b2db1bc47b8",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:37.097Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "7f91be57-9d2d-4e14-98b6-f150a312de19",
+            "gameNumber": 5,
+            "points": [
+              {
+                "id": "a175891c-364c-4fb9-a2ba-4b5945ebc73f",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:37.263Z"
+              },
+              {
+                "id": "d27cae3a-f658-4c5c-9769-74de5b5e4268",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:37.621Z"
+              },
+              {
+                "id": "e1eff6f7-85f3-401f-80ff-b0058d593ef4",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:38.661Z"
+              },
+              {
+                "id": "7b1f442f-27ff-48ea-8df8-5c69a0051d21",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:38.812Z"
+              },
+              {
+                "id": "e994a39f-253f-4633-8fee-d1ece030ba52",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:38.962Z"
+              },
+              {
+                "id": "0aa1cd42-5c9e-4597-aaee-2f9e9af5e09f",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:39.114Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 30
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "7ea4b746-d546-436d-b28e-59b2ae27eeea",
+            "gameNumber": 6,
+            "points": [
+              {
+                "id": "2107eb33-7a98-49df-8382-994215eb72b7",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:39.365Z"
+              },
+              {
+                "id": "8edea4cb-b6bb-46d2-af2c-3fe9a0a0f3e2",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:40.919Z"
+              },
+              {
+                "id": "1cef4ca1-da60-4755-b69a-6e48c98fb76c",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:41.047Z"
+              },
+              {
+                "id": "98668925-5759-44a5-b266-da376429afa7",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:41.285Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "2846264d-e775-4fbc-8273-0c6277eb9696",
+            "gameNumber": 7,
+            "points": [
+              {
+                "id": "11769a59-a06c-4765-9494-e8836f522d7a",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:41.829Z"
+              },
+              {
+                "id": "49f1ff33-60a4-4f1f-bcd7-d413e2812f4f",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:41.979Z"
+              },
+              {
+                "id": "65708246-3f13-456c-94ab-4de6326292d6",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:42.153Z"
+              },
+              {
+                "id": "6f5a28b9-d6b6-4008-b0c0-4492992740d7",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:42.278Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "db284ddc-8407-470d-87ad-042de7dbffc9",
+            "gameNumber": 8,
+            "points": [
+              {
+                "id": "3981dc95-a435-473c-9509-4e57efb3693a",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:42.449Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 15
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 4,
+        "opponentGamesWon": 3,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 1,
+    "currentGameIndex": 7,
+    "winner": null
+  },
+  {
+    "id": "f8b9f294-f5bf-4fb7-8dec-926b6289b02e",
+    "playerId": "coach-player-1",
+    "opponentName": "nish",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-15T14:26:46.537Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "2b168c4c-4c40-45e1-89ff-ce25bdd4ffdd",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "3d0cfca0-536d-4868-a322-67b9a0ab38f0",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "6a54a198-e555-4936-8e41-89bbcca39c7e",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:48.027Z"
+              },
+              {
+                "id": "df509f5a-7283-4c18-96b1-94b301f54390",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:48.162Z"
+              },
+              {
+                "id": "cd33500b-495c-414e-be99-473806449b4e",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:48.297Z"
+              },
+              {
+                "id": "1a5bc919-dd82-485b-b57a-e793d69bb350",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:48.445Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "598e5344-132e-48d1-83ef-b5bf333c03d6",
+            "gameNumber": 2,
+            "points": [
+              {
+                "id": "6b4f57fc-1167-4032-a5cf-2d489f068487",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:49.544Z"
+              },
+              {
+                "id": "cf94407b-22c9-43ca-994f-25975db40316",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:49.678Z"
+              },
+              {
+                "id": "1dea6050-c17e-4422-9856-4cbd242adcfb",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:49.811Z"
+              },
+              {
+                "id": "fac180fe-4cfa-46ee-a6cf-2fb917575945",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:49.944Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "480ba006-1cb7-490a-9821-3466700784f2",
+            "gameNumber": 3,
+            "points": [
+              {
+                "id": "23517462-21af-49c2-ace0-1a4015f7c431",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:50.694Z"
+              },
+              {
+                "id": "c54b2ec8-f913-4f8e-a6b1-22f525e4c19f",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:50.844Z"
+              },
+              {
+                "id": "9bf90aca-ea47-446f-b394-0545898a25bb",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:51.112Z"
+              },
+              {
+                "id": "e7c4473d-5b67-46a2-beae-5c10447bfcf5",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:51.263Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "c21acad9-d724-4bcf-8737-43eedd3dd557",
+            "gameNumber": 4,
+            "points": [
+              {
+                "id": "57c4b7fa-9757-4597-8171-c62ad97c6401",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:52.118Z"
+              },
+              {
+                "id": "ff9cc808-89c1-4f08-9508-890f8cecf59a",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:52.530Z"
+              },
+              {
+                "id": "c569ecf9-bb8c-4777-9f4b-0e4c4ed5432d",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:52.948Z"
+              },
+              {
+                "id": "f668e80a-11e8-401b-804a-19234fe4ceb7",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:53.250Z"
+              },
+              {
+                "id": "de2b757d-200c-4d76-b3d3-e132ce89c78b",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:53.713Z"
+              },
+              {
+                "id": "376177a1-8e07-466c-834f-71c11b718172",
+                "pointNumber": 6,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:54.088Z"
+              },
+              {
+                "id": "20046024-a43d-4b59-89bf-b03db764ff97",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:54.711Z"
+              },
+              {
+                "id": "f59ccef8-4e43-48bf-9bf7-88120f7c8ca7",
+                "pointNumber": 8,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:55.587Z"
+              }
+            ],
+            "score": {
+              "player": "Adv",
+              "opponent": 40
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "a7fd868b-6943-4eb4-91da-1782933c8c17",
+            "gameNumber": 5,
+            "points": [
+              {
+                "id": "56f4b38d-aa0b-46f6-aadc-e7b194b6b1e7",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:56.238Z"
+              },
+              {
+                "id": "8a8023e8-f61f-412e-9ab0-61a9980fee9c",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:56.630Z"
+              },
+              {
+                "id": "b42df692-5a20-494a-a674-6b13f70125b4",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:56.962Z"
+              },
+              {
+                "id": "db74bc43-3fac-4cd4-816a-058da4b83e45",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:57.323Z"
+              },
+              {
+                "id": "35192365-bf9d-4a80-8eef-c0b9415d524d",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:57.711Z"
+              },
+              {
+                "id": "c65997f7-09bf-4f0d-be9b-86c0ee48cb53",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:58.163Z"
+              },
+              {
+                "id": "4110d5fd-3fa5-456e-8c52-0ad0008c1ce2",
+                "pointNumber": 7,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:26:58.726Z"
+              },
+              {
+                "id": "1ffc40e0-e9ba-45ae-bca0-df39fcff9f8a",
+                "pointNumber": 8,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:59.492Z"
+              },
+              {
+                "id": "227d24fb-37ec-4076-a6fb-c1ca08529180",
+                "pointNumber": 9,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:26:59.766Z"
+              },
+              {
+                "id": "b492ed0b-5956-4371-9c8f-07fb18a9b9f8",
+                "pointNumber": 10,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:00.224Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": "Adv"
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "72cb6a0c-bd5e-4341-abfb-09ae2df496a6",
+            "gameNumber": 6,
+            "points": [
+              {
+                "id": "e6867392-0cb0-4776-87d9-5eddb861f652",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:01.947Z"
+              },
+              {
+                "id": "f99a2673-248a-45d3-a0a8-170f2fb02867",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:02.162Z"
+              },
+              {
+                "id": "8a02a6ea-ebc7-454f-a31a-32179fb38529",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:02.379Z"
+              },
+              {
+                "id": "69057149-6273-4b9f-a985-8eadcaebcb38",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:02.761Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "99396b0e-62db-40cc-8251-c4eb28bf3ce3",
+            "gameNumber": 7,
+            "points": [
+              {
+                "id": "26e8678a-d661-4a07-9a01-90489a1627ac",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:03.265Z"
+              },
+              {
+                "id": "428a4650-c879-48ba-be0d-0d71e0d272e6",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:03.496Z"
+              },
+              {
+                "id": "d12467a8-0f54-4271-a331-198d9456da75",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:03.678Z"
+              },
+              {
+                "id": "d6c9fd15-9b66-46d4-bc36-76f359ed08f8",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:03.849Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "6289daaa-61ca-4834-92ba-859da320fd09",
+            "gameNumber": 8,
+            "points": [
+              {
+                "id": "4bfe9cb5-2736-4b25-9194-9d006a0002f9",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:04.431Z"
+              },
+              {
+                "id": "e544989f-dd8f-4791-b715-c2114366319b",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:04.680Z"
+              },
+              {
+                "id": "59e74e3e-5ac2-4f47-9653-fad56c63efb0",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:05.278Z"
+              },
+              {
+                "id": "9d3cb199-adc5-493c-9d28-55392b870fa3",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:05.605Z"
+              },
+              {
+                "id": "d8320801-6b23-4ee4-a6f9-31fb75d43aab",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:05.929Z"
+              },
+              {
+                "id": "e0fd8e42-f3bd-4243-8dcc-2ae835e16c79",
+                "pointNumber": 6,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:06.273Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 30
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "11976207-c9e3-4435-b86a-f404ac51b45a",
+            "gameNumber": 9,
+            "points": [
+              {
+                "id": "230f105c-a06a-4e23-b904-bba4c29a3df6",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:07.044Z"
+              },
+              {
+                "id": "a388bd97-05a5-4aa8-a14d-a2f1daff9edf",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:07.495Z"
+              },
+              {
+                "id": "70f9ee6f-0ef9-430e-afaf-e863523eab30",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:07.829Z"
+              },
+              {
+                "id": "48820d0f-9d2e-4938-931a-2320d24435c3",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:08.011Z"
+              },
+              {
+                "id": "12156ca0-2cd0-4c81-8c9c-cb43501a71e4",
+                "pointNumber": 5,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:08.181Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 15
+            },
+            "winner": "player",
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 6,
+        "opponentGamesWon": 3,
+        "winner": "player"
+      },
+      {
+        "id": "fc8f9101-e131-462f-8084-58b0e8e67d25",
+        "setNumber": 2,
+        "games": [
+          {
+            "id": "c4f28c35-2679-482c-b4cc-0a90fd2e26a5",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "2120cdc8-8c43-4806-aec8-a7d7a6052fc7",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:08.347Z"
+              },
+              {
+                "id": "9418c428-b90a-4ea1-ba81-2c87e4419148",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:08.595Z"
+              },
+              {
+                "id": "3e26cb0c-795f-4186-93fd-1d7f2f958747",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:08.762Z"
+              },
+              {
+                "id": "66094990-ee1f-4316-a16c-fe96b244ba39",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:08.933Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "5e042d23-8444-4161-98e5-f36d624ea24b",
+            "gameNumber": 2,
+            "points": [
+              {
+                "id": "3574a25c-7d2d-4c88-99c4-4090d7d15a5c",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:09.061Z"
+              },
+              {
+                "id": "8a88cfec-9ccd-44ec-86e5-f04ee3b3e76d",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:09.213Z"
+              },
+              {
+                "id": "ee21a6cf-13d6-48d3-bbe6-fb3afd9d9205",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:09.516Z"
+              },
+              {
+                "id": "812ce606-09ce-4c5b-96f8-b7c577dd5221",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:09.799Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "280ed559-bf98-46f9-863c-fb5a9eaa8502",
+            "gameNumber": 3,
+            "points": [
+              {
+                "id": "e4c81182-576a-443c-8a2f-3f04ad7bb99c",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:09.980Z"
+              },
+              {
+                "id": "717a8fa6-3952-47a9-b058-55e3308a714b",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:10.311Z"
+              },
+              {
+                "id": "5b3cc73b-a495-44cc-9754-21cff2614603",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:10.602Z"
+              },
+              {
+                "id": "2116c63e-4578-4132-8a56-6918b0d217de",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:10.761Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "ccc81f80-9e35-4557-bfb7-6d88538357c4",
+            "gameNumber": 4,
+            "points": [
+              {
+                "id": "f35c2ecf-0286-499a-b3ca-a6545d5986d6",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:10.932Z"
+              },
+              {
+                "id": "c97b4750-ebf4-4a08-a366-4d33a2c37dec",
+                "pointNumber": 2,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:11.081Z"
+              },
+              {
+                "id": "273a713b-b5bd-44fd-a840-62dd06d76951",
+                "pointNumber": 3,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:11.246Z"
+              },
+              {
+                "id": "6c3407c9-b04c-4c3b-b0a1-989551cdb91c",
+                "pointNumber": 4,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:11.417Z"
+              }
+            ],
+            "score": {
+              "player": 40,
+              "opponent": 0
+            },
+            "winner": "player",
+            "isTiebreak": false
+          },
+          {
+            "id": "46461a63-4080-4fa7-84c2-16c0c4b9d936",
+            "gameNumber": 5,
+            "points": [
+              {
+                "id": "2c4ca726-e9eb-4b1c-9e8e-6e41c22d59dc",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:27:11.597Z"
+              },
+              {
+                "id": "bc4d4c21-8164-4615-a940-f6eae2992aa4",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:12.345Z"
+              },
+              {
+                "id": "5c850086-4a70-42e1-a272-c66e5b72c7da",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:12.511Z"
+              },
+              {
+                "id": "3fcefd38-250d-4f5e-8d0e-85f5fd2c45d1",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:12.681Z"
+              },
+              {
+                "id": "dd971ef1-5dde-4e82-8c34-df244d7f26ab",
+                "pointNumber": 5,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:12.846Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "be0966dd-9d7a-460f-af8e-0059edc18002",
+            "gameNumber": 6,
+            "points": [
+              {
+                "id": "a05a396d-3ebc-4a93-a523-979a4eadf154",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:12.978Z"
+              },
+              {
+                "id": "abeefbdc-aa38-4a5a-87bd-e98da40d786f",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:13.279Z"
+              },
+              {
+                "id": "402771d0-babe-4d1f-8927-dcdc2d73a5bd",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:13.432Z"
+              },
+              {
+                "id": "0cfb61cf-0cf9-4e35-8865-8690c6e16767",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:13.579Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "01e34326-e2ec-47fa-8563-6455f2762e62",
+            "gameNumber": 7,
+            "points": [
+              {
+                "id": "664c1440-63c7-4a95-9212-3b744b47cd5d",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:14.016Z"
+              },
+              {
+                "id": "bf1dd38d-6e45-4a62-a2f8-a13fae5bc096",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:14.281Z"
+              },
+              {
+                "id": "1edb64af-6e51-4561-ac17-f514d0e0d207",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:14.617Z"
+              },
+              {
+                "id": "2a010c59-d6c4-4a00-9c83-9686042d3c14",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:14.812Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "c62a01a2-7eee-4f03-a7e6-484e2f837584",
+            "gameNumber": 8,
+            "points": [
+              {
+                "id": "f16c91ff-3efa-4738-aaae-db1e9e3ff67a",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:15.046Z"
+              },
+              {
+                "id": "7716ae67-03be-4741-8fa2-cd1128c5ee3a",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:15.274Z"
+              },
+              {
+                "id": "0fc56204-4088-428b-88cd-e2a5a640bd5e",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:15.462Z"
+              },
+              {
+                "id": "a3361305-94c6-4a7b-8c7d-9d11b83500d7",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:15.664Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "c06479f2-4d8f-4ee2-a398-01d6a31b342f",
+            "gameNumber": 9,
+            "points": [
+              {
+                "id": "3324a585-6624-4318-9e49-151965acc167",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:15.829Z"
+              },
+              {
+                "id": "60808ee6-b0d9-4156-9e72-b6ad38cddbec",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:16.097Z"
+              },
+              {
+                "id": "654d6b8f-4d32-4761-b5db-2ec730ad0656",
+                "pointNumber": 3,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:16.862Z"
+              },
+              {
+                "id": "fbb19798-f139-4515-9636-4c40b8e698a2",
+                "pointNumber": 4,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:17.062Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 40
+            },
+            "winner": "opponent",
+            "isTiebreak": false
+          },
+          {
+            "id": "8f8ca4ec-1c0e-4c4c-9793-a1f39c1a7bb3",
+            "gameNumber": 10,
+            "points": [
+              {
+                "id": "1010b130-99e0-4b3a-8364-b2dc7424ad27",
+                "pointNumber": 1,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:17.246Z"
+              },
+              {
+                "id": "bd03fa05-a2a0-4390-82e5-b177ac9d6105",
+                "pointNumber": 2,
+                "winner": "opponent",
+                "timestamp": "2026-07-15T14:27:17.450Z"
+              }
+            ],
+            "score": {
+              "player": 0,
+              "opponent": 30
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 4,
+        "opponentGamesWon": 5,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 1,
+    "currentGameIndex": 9,
+    "winner": null
+  },
+  {
+    "id": "b5325aa9-747a-44ff-9070-5bb3e6073051",
+    "playerId": "player-1",
+    "opponentName": "Test Opponent",
+    "format": "best-of-3",
+    "status": "in-progress",
+    "startedAt": "2026-07-15T14:28:10.333Z",
+    "completedAt": null,
+    "sets": [
+      {
+        "id": "e46c82a0-82b9-49d4-8206-f3e116926307",
+        "setNumber": 1,
+        "games": [
+          {
+            "id": "213eed11-56a4-4575-905c-4c555189a9c3",
+            "gameNumber": 1,
+            "points": [
+              {
+                "id": "65eb9919-2502-4032-8466-80c9cd24604b",
+                "pointNumber": 1,
+                "winner": "player",
+                "timestamp": "2026-07-15T14:28:10.335Z"
+              }
+            ],
+            "score": {
+              "player": 15,
+              "opponent": 0
+            },
+            "winner": null,
+            "isTiebreak": false
+          }
+        ],
+        "playerGamesWon": 0,
+        "opponentGamesWon": 0,
+        "winner": null
+      }
+    ],
+    "currentSetIndex": 0,
+    "currentGameIndex": 0,
+    "winner": null
   }
 ]
