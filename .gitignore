@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+# runtime data (JSON-backed persistence, not source code)
+/data/*.json
 # dependencies
 /node_modules
 /.pnp
