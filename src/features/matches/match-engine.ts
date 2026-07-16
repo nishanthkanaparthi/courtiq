@@ -135,3 +135,21 @@ function determineSetWinner(
   if (opponentGames >= 6 && opponentGames - playerGames >= 2) return 'opponent';
   return null;
 }
+/**
+ * Marks an in-progress match as abandoned. A match that is already
+ * completed cannot be abandoned — this is a no-op in that case,
+ * since a decided match's result shouldn't be discarded. Does not
+ * mutate the input match.
+ */
+export function abandonMatch(match: Match): Match {
+  if (match.status !== 'in-progress') {
+    return match;
+  }
+
+  return {
+    ...match,
+    status: 'abandoned',
+    completedAt: new Date().toISOString(),
+    winner: null,
+  };
+}
