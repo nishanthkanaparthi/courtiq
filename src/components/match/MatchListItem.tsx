@@ -1,13 +1,6 @@
 import Link from 'next/link';
 import { Card } from '@/components/ui/Card';
-import { Match, formatFinalScore } from '@/features/matches/types';
-
-function resultLabel(match: Match): string {
-  if (match.status === 'abandoned') return 'Abandoned';
-  if (match.winner === 'player') return 'Win';
-  if (match.winner === 'opponent') return 'Loss';
-  return 'In Progress';
-}
+import { Match, formatFinalScore, resultLabel } from '@/features/matches/types';
 
 export function MatchListItem({ match }: { match: Match }) {
   const date = new Date(match.startedAt).toLocaleDateString();

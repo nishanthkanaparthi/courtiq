@@ -104,3 +104,10 @@ export function formatFinalScore(match: Match): string {
     .map((set) => `${set.playerGamesWon}-${set.opponentGamesWon}`)
     .join(', ');
 }
+
+export function resultLabel(match: Match): string {
+  if (match.status === 'abandoned') return 'Abandoned';
+  if (match.winner === 'player') return 'Win';
+  if (match.winner === 'opponent') return 'Loss';
+  return 'In Progress';
+}
