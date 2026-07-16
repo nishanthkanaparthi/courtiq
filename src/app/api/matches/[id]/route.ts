@@ -34,3 +34,19 @@ export async function PATCH(
   const { id } = await params;
   return handleAbandonMatch(id, getRepository());
 }
+
+export async function handleGetMatch(matchId: string, repository: MatchRepository) {
+  const match = await repository.findById(matchId);
+  if (!match) {
+    return NextResponse.json({ error: 'Match not found' }, { status: 404 });
+  }
+  return NextResponse.json(match, { status: 200 });
+}
+
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  return handleGetMatch(id, getRepository());
+}

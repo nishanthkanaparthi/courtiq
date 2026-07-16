@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { handleAbandonMatch } from './route';
+import { handleAbandonMatch, handleGetMatch } from './route';
 import { Match, createMatch } from '@/features/matches/types';
 import { MatchRepository } from '@/lib/repositories/match-repository';
 
@@ -57,5 +57,28 @@ describe('handleAbandonMatch', () => {
     const response = await handleAbandonMatch(match.id, repository);
 
     expect(response.status).toBe(400);
+  });
+});
+
+describe('handleGetMatch', () => {
+  it('returns 404 when the match does not exist', async () => {
+    const repository = new FakeMatchRepository();
+
+    const response = await handleGetMatch('nonexistent', repository);
+
+    expect(response.status).toBe(404);
+  });
+
+  it('returns the match when it exists', async () => {
+    const repository = new FakeMatchRepository();
+    const match = createMatch('player-1', 'Test Opponent');
+    await repository.save(match);
+
+    const response = await handleGetMatch(match.id, repository);
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.id).toBe(match.id);
+    expect(body.opponentName).toBe('Test Opponent');
   });
 });

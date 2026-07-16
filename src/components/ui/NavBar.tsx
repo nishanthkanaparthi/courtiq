@@ -10,7 +10,9 @@ export function NavBar() {
         <Link href="/match/live" className="text-sm text-stone-600 hover:text-emerald-800">
           Live Match
         </Link>
-        <span className="text-sm text-stone-300">History</span>
+        <Link href="/history" className="text-sm text-stone-600 hover:text-emerald-800">
+       History
+        </Link>
         <span className="text-sm text-stone-300">Players</span>
       </div>
     </nav>

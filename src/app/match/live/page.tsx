@@ -5,9 +5,10 @@ import { Card } from '@/components/ui/Card';
 import { Scoreboard } from '@/components/match/Scoreboard';
 import { PointControls } from '@/components/match/PointControls';
 import { Match, Side } from '@/features/matches/types';
+import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
+
 
 // Placeholder until player roster management exists (a later phase).
-const PLACEHOLDER_PLAYER_ID = 'coach-player-1';
 
 export default function LiveMatchPage() {
   const [match, setMatch] = useState<Match | null>(null);

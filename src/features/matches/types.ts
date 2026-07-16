@@ -97,3 +97,17 @@ export function createTiebreakGame(gameNumber: number): MatchGame {
     isTiebreak: true,
   };
 }
+
+export function formatFinalScore(match: Match): string {
+  return match.sets
+    .filter((set) => set.winner !== null)
+    .map((set) => `${set.playerGamesWon}-${set.opponentGamesWon}`)
+    .join(', ');
+}
+
+export function resultLabel(match: Match): string {
+  if (match.status === 'abandoned') return 'Abandoned';
+  if (match.winner === 'player') return 'Win';
+  if (match.winner === 'opponent') return 'Loss';
+  return 'In Progress';
+}
