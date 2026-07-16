@@ -1,8 +1,8 @@
 // src/features/matches/match-engine.test.ts
 
 import { createMatch } from './types';
-import { recordPoint } from './match-engine';
 import { Match, Side } from './types';
+import { recordPoint, abandonMatch } from './match-engine';
 
 function winGame(match: Match, winner: Side): Match {
   let updated = match;
@@ -76,5 +76,30 @@ describe('recordPoint', () => {
     expect(match.status).toBe('in-progress');
     expect(match.sets.length).toBe(3);
     expect(match.currentSetIndex).toBe(2);
+  });
+});
+
+describe('abandonMatch', () => {
+  it('marks an in-progress match as abandoned', () => {
+    const match = createMatch('player-1', 'Test Opponent');
+
+    const abandoned = abandonMatch(match);
+
+    expect(abandoned.status).toBe('abandoned');
+    expect(abandoned.completedAt).not.toBeNull();
+    expect(abandoned.winner).toBeNull();
+  });
+
+  it('does not change a match that is already completed', () => {
+    let match = createMatch('player-1', 'Test Opponent');
+    for (let i = 0; i < 6; i++) match = winGame(match, 'player');
+    for (let i = 0; i < 6; i++) match = winGame(match, 'player');
+
+    expect(match.status).toBe('completed');
+
+    const result = abandonMatch(match);
+
+    expect(result).toEqual(match);
+    expect(result.status).toBe('completed');
   });
 });
