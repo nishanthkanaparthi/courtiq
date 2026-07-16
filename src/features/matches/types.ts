@@ -97,3 +97,10 @@ export function createTiebreakGame(gameNumber: number): MatchGame {
     isTiebreak: true,
   };
 }
+
+export function formatFinalScore(match: Match): string {
+  return match.sets
+    .filter((set) => set.winner !== null)
+    .map((set) => `${set.playerGamesWon}-${set.opponentGamesWon}`)
+    .join(', ');
+}
