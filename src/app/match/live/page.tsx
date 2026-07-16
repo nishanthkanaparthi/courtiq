@@ -57,6 +57,28 @@ export default function LiveMatchPage() {
     }
   }
 
+  async function handleAbandon() {
+    if (!match) return;
+    const confirmed = window.confirm(
+      'Are you sure you want to abandon this match? This cannot be undone.'
+    );
+    if (!confirmed) return;
+
+    setError(null);
+    try {
+      const response = await fetch(`/api/matches/${match.id}`, {
+        method: 'PATCH',
+      });
+      if (!response.ok) {
+        throw new Error('Could not abandon the match.');
+      }
+      const updated: Match = await response.json();
+      setMatch(updated);
+    } catch {
+      setError('Something went wrong abandoning the match.');
+    }
+  }
+
   if (!match) {
     return (
       <div className="space-y-4">
@@ -91,7 +113,15 @@ export default function LiveMatchPage() {
       <h1 className="text-xl font-semibold text-emerald-900">Live Match</h1>
       {error && <p className="text-sm text-red-700">{error}</p>}
       <Scoreboard match={match} />
-      <PointControls onPointWon={logPoint} disabled={match.status === 'completed'} />
+      <PointControls onPointWon={logPoint} disabled={match.status !== 'in-progress'} />
+      {match.status === 'in-progress' && (
+        <button
+          onClick={handleAbandon}
+          className="text-sm text-red-700 underline"
+        >
+          Abandon Match
+        </button>
+      )}
     </div>
   );
 }
