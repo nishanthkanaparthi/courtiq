@@ -6,15 +6,14 @@ import { Scoreboard } from '@/components/match/Scoreboard';
 import { PointControls } from '@/components/match/PointControls';
 import { Match, Side } from '@/features/matches/types';
 import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
-
-
-// Placeholder until player roster management exists (a later phase).
+import { STAT_TYPES, StatOutcome } from '@/features/stats/types';
 
 export default function LiveMatchPage() {
   const [match, setMatch] = useState<Match | null>(null);
   const [opponentName, setOpponentName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedStatId, setSelectedStatId] = useState<string>(STAT_TYPES[0].id);
 
   async function startMatch() {
     if (opponentName.trim() === '') {
@@ -80,6 +79,22 @@ export default function LiveMatchPage() {
     }
   }
 
+  async function logStat(outcome: StatOutcome) {
+    if (!match) return;
+    setError(null);
+    try {
+      const response = await fetch(`/api/matches/${match.id}/stats`, {
+        method: 'POST',
+        body: JSON.stringify({ statTypeId: selectedStatId, outcome }),
+      });
+      if (!response.ok) {
+        throw new Error('Could not log that stat.');
+      }
+    } catch {
+      setError('Something went wrong logging that stat.');
+    }
+  }
+
   if (!match) {
     return (
       <div className="space-y-4">
@@ -115,6 +130,51 @@ export default function LiveMatchPage() {
       {error && <p className="text-sm text-red-700">{error}</p>}
       <Scoreboard match={match} />
       <PointControls onPointWon={logPoint} disabled={match.status !== 'in-progress'} />
+
+      {match.status === 'in-progress' && (
+        <Card>
+          <label className="block text-sm text-stone-600 mb-2" htmlFor="statSelect">
+            Track a stat
+          </label>
+          <select
+            id="statSelect"
+            value={selectedStatId}
+            onChange={(e) => setSelectedStatId(e.target.value)}
+            className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm mb-3"
+          >
+            {STAT_TYPES.map((statType) => (
+              <option key={statType.id} value={statType.id}>
+                {statType.label}
+              </option>
+            ))}
+          </select>
+
+          {STAT_TYPES.find((s) => s.id === selectedStatId)?.unit === 'count' ? (
+            <button
+              onClick={() => logStat('occurred')}
+              className="w-full rounded-xl bg-emerald-700 text-white text-sm font-medium py-2"
+            >
+              Log
+            </button>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => logStat('in')}
+                className="rounded-xl bg-emerald-700 text-white text-sm font-medium py-2"
+              >
+                In
+              </button>
+              <button
+                onClick={() => logStat('out')}
+                className="rounded-xl bg-emerald-700 text-white text-sm font-medium py-2"
+              >
+                Out
+              </button>
+            </div>
+          )}
+        </Card>
+      )}
+
       {match.status === 'in-progress' && (
         <button
           onClick={handleAbandon}
