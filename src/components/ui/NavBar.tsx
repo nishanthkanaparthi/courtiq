@@ -13,7 +13,9 @@ export function NavBar() {
         <Link href="/history" className="text-sm text-stone-600 hover:text-emerald-800">
        History
         </Link>
-        <span className="text-sm text-stone-300">Players</span>
+        <Link href="/analytics" className="text-sm text-stone-600 hover:text-emerald-800">
+          Analytics
+        </Link>
       </div>
     </nav>
   );
