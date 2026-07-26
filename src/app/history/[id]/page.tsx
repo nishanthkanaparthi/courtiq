@@ -49,30 +49,30 @@ export default function MatchDetailPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-xl font-semibold text-emerald-900">Match Detail</h1>
+      <h1 className="text-xl font-semibold text-royal">Match Detail</h1>
       {error && <p className="text-sm text-red-700">{error}</p>}
       {!match && !error && <p className="text-sm text-stone-500">Loading...</p>}
       {match && (
         <>
           <Scoreboard match={match} />
 
-          <div className="flex gap-4 border-b border-stone-200">
+          <div className="flex gap-2">
             <button
               onClick={() => setActiveTab('points')}
-              className={`text-sm pb-2 ${
+              className={`text-sm px-4 py-1.5 rounded-full ${
                 activeTab === 'points'
-                  ? 'text-emerald-800 border-b-2 border-emerald-800 font-medium'
-                  : 'text-stone-500'
+                  ? 'bg-royal text-white font-medium'
+                  : 'bg-white border border-stone-200 text-stone-600'
               }`}
             >
               Points
             </button>
             <button
               onClick={() => setActiveTab('stats')}
-              className={`text-sm pb-2 ${
+              className={`text-sm px-4 py-1.5 rounded-full ${
                 activeTab === 'stats'
-                  ? 'text-emerald-800 border-b-2 border-emerald-800 font-medium'
-                  : 'text-stone-500'
+                  ? 'bg-royal text-white font-medium'
+                  : 'bg-white border border-stone-200 text-stone-600'
               }`}
             >
               Match Stats

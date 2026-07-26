@@ -27,7 +27,10 @@ export default function AnalyticsPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-xl font-semibold text-emerald-900">Analytics</h1>
+      <div>
+        <h1 className="text-xl font-semibold text-royal">Analytics</h1>
+        <p className="text-sm text-stone-500">Performance trends across your full match history.</p>
+      </div>
       {error && <p className="text-sm text-red-700">{error}</p>}
       {!summaries && !error && <p className="text-sm text-stone-500">Loading...</p>}
       {summaries && <MatchStats summaries={summaries} />}

@@ -27,7 +27,7 @@ export default function HistoryPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-xl font-semibold text-emerald-900">Match History</h1>
+      <h1 className="text-xl font-semibold text-royal">Match History</h1>
       {error && <p className="text-sm text-red-700">{error}</p>}
       {matches === null && !error && <p className="text-sm text-stone-500">Loading...</p>}
       {matches !== null && matches.length === 0 && (

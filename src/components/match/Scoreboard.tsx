@@ -21,7 +21,7 @@ export function Scoreboard({ match }: { match: Match }) {
       <div className="grid grid-cols-2 gap-4 text-center">
         <div>
           <p className="text-sm text-stone-500">You</p>
-          <p className="text-3xl font-semibold text-emerald-900">
+          <p className="text-3xl font-semibold text-royal">
             {currentGame.isTiebreak
               ? currentGame.tiebreakScore?.player ?? 0
               : displayPoint(currentGame.score.player)}
@@ -32,7 +32,7 @@ export function Scoreboard({ match }: { match: Match }) {
         </div>
         <div>
           <p className="text-sm text-stone-500">Opponent</p>
-          <p className="text-3xl font-semibold text-emerald-900">
+          <p className="text-3xl font-semibold text-royal">
             {currentGame.isTiebreak
               ? currentGame.tiebreakScore?.opponent ?? 0
               : displayPoint(currentGame.score.opponent)}
@@ -44,11 +44,11 @@ export function Scoreboard({ match }: { match: Match }) {
       </div>
 
       {currentGame.isTiebreak && (
-        <p className="text-center mt-3 text-xs text-emerald-700 font-medium">Tiebreak</p>
+        <p className="text-center mt-3 text-xs text-royal-light font-medium">Tiebreak</p>
       )}
 
       {match.status === 'completed' && (
-        <p className="text-center mt-4 text-emerald-700 font-medium">
+        <p className="text-center mt-4 text-royal-light font-medium">
           Match won by {match.winner === 'player' ? 'you' : 'opponent'}
         </p>
       )}

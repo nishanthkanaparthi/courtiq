@@ -1,5 +1,3 @@
-// src/components/match/MatchListItem.tsx
-
 import Link from 'next/link';
 import { Card } from '@/components/ui/Card';
 import { Match, formatFinalScore } from '@/features/matches/types';
@@ -20,7 +18,7 @@ export function MatchListItem({ match }: { match: Match }) {
       <Card>
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-sm font-medium text-emerald-900">vs {match.opponentName}</p>
+            <p className="text-sm font-medium text-royal">vs {match.opponentName}</p>
             <p className="text-xs text-stone-500">{date}</p>
           </div>
           <div className="text-right">
@@ -28,7 +26,7 @@ export function MatchListItem({ match }: { match: Match }) {
             <p
               className={`text-xs font-medium ${
                 result === 'Win'
-                  ? 'text-emerald-700'
+                  ? 'text-royal-light'
                   : result === 'Loss'
                     ? 'text-red-700'
                     : 'text-stone-500'

@@ -23,7 +23,7 @@ export function MatchPointHistory({ sets }: { sets: MatchSet[] }) {
     <div className="space-y-4">
       {sets.map((set) => (
         <Card key={set.id}>
-          <p className="text-sm font-medium text-emerald-900 mb-2">
+          <p className="text-sm font-medium text-royal mb-2">
             Set {set.setNumber} — {set.playerGamesWon}-{set.opponentGamesWon}
           </p>
           <div className="space-y-1">

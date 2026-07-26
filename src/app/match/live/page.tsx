@@ -7,6 +7,15 @@ import { PointControls } from '@/components/match/PointControls';
 import { Match, Side } from '@/features/matches/types';
 import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
 import { STAT_TYPES, StatOutcome } from '@/features/stats/types';
+import { Target, TriangleAlert, Zap, TrendingUp, CircleAlert, LucideIcon } from 'lucide-react';
+
+const STAT_ICONS: Record<string, LucideIcon> = {
+  'first-serve': Target,
+  'unforced-errors': TriangleAlert,
+  winners: Zap,
+  'break-points-won': TrendingUp,
+  'double-faults': CircleAlert,
+};
 
 export default function LiveMatchPage() {
   const [match, setMatch] = useState<Match | null>(null);
@@ -98,7 +107,7 @@ export default function LiveMatchPage() {
   if (!match) {
     return (
       <div className="space-y-4">
-        <h1 className="text-xl font-semibold text-emerald-900">Start a Live Match</h1>
+        <h1 className="text-xl font-semibold text-royal">Start a Live Match</h1>
         <Card>
           <label className="block text-sm text-stone-600 mb-2" htmlFor="opponentName">
             Opponent name
@@ -115,7 +124,7 @@ export default function LiveMatchPage() {
           <button
             onClick={startMatch}
             disabled={isLoading}
-            className="rounded-xl bg-emerald-800 text-white text-sm font-medium px-4 py-2 disabled:opacity-40"
+            className="rounded-xl bg-royal-light text-white text-sm font-medium px-4 py-2 disabled:opacity-40"
           >
             {isLoading ? 'Starting...' : 'Start Match'}
           </button>
@@ -126,49 +135,55 @@ export default function LiveMatchPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-xl font-semibold text-emerald-900">Live Match</h1>
+      <h1 className="text-xl font-semibold text-royal">Live Match</h1>
       {error && <p className="text-sm text-red-700">{error}</p>}
       <Scoreboard match={match} />
       <PointControls onPointWon={logPoint} disabled={match.status !== 'in-progress'} />
 
       {match.status === 'in-progress' && (
         <Card>
-          <label className="block text-sm text-stone-600 mb-2" htmlFor="statSelect">
+          <label className="block text-xs text-stone-500 mb-2" htmlFor="statSelect">
             Track a stat
           </label>
-          <select
-            id="statSelect"
-            value={selectedStatId}
-            onChange={(e) => setSelectedStatId(e.target.value)}
-            className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm mb-3"
-          >
-            {STAT_TYPES.map((statType) => (
-              <option key={statType.id} value={statType.id}>
-                {statType.label}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center gap-2 mb-3">
+            {(() => {
+              const Icon = STAT_ICONS[selectedStatId] ?? Target;
+              return <Icon size={16} className="text-royal-light" />;
+            })()}
+            <select
+              id="statSelect"
+              value={selectedStatId}
+              onChange={(e) => setSelectedStatId(e.target.value)}
+              className="flex-1 rounded-lg border border-stone-300 px-3 py-2 text-sm"
+            >
+              {STAT_TYPES.map((statType) => (
+                <option key={statType.id} value={statType.id}>
+                  {statType.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {STAT_TYPES.find((s) => s.id === selectedStatId)?.unit === 'count' ? (
             <button
               onClick={() => logStat('occurred')}
-              className="w-full rounded-xl bg-emerald-700 text-white text-sm font-medium py-2"
+              className="w-full rounded-xl bg-royal-light text-white text-sm font-medium py-2.5 hover:bg-royal"
             >
-              Log
+              Log Occurrence
             </button>
           ) : (
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={() => logStat('in')}
-                className="rounded-xl bg-emerald-700 text-white text-sm font-medium py-2"
+                className="rounded-xl bg-royal-light text-white text-sm font-medium py-2.5 hover:bg-royal"
               >
-                In
+                Serve In
               </button>
               <button
                 onClick={() => logStat('out')}
-                className="rounded-xl bg-emerald-700 text-white text-sm font-medium py-2"
+                className="rounded-xl bg-red-700 text-white text-sm font-medium py-2.5 hover:bg-red-800"
               >
-                Out
+                Serve Out
               </button>
             </div>
           )}

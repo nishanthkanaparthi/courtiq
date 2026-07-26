@@ -11,14 +11,14 @@ export function PointControls({ onPointWon, disabled }: PointControlsProps) {
       <button
         disabled={disabled}
         onClick={() => onPointWon('player')}
-        className="rounded-xl bg-emerald-800 text-white py-2 font-medium disabled:opacity-40"
+        className="rounded-xl bg-royal-light text-white py-2 font-medium disabled:opacity-40"
       >
         Point: You
       </button>
       <button
         disabled={disabled}
         onClick={() => onPointWon('opponent')}
-        className="rounded-xl bg-emerald-800 text-white py-2 font-medium disabled:opacity-40"
+        className="rounded-xl bg-royal-light text-white py-2 font-medium disabled:opacity-40"
       >
         Point: Opponent
       </button>

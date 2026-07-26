@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --color-cream: #FAF7F0;
+  --color-royal: #1E3A8A;
+  --color-royal-light: #2563EB;
+}
