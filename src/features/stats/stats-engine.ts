@@ -1,6 +1,4 @@
-// src/features/stats/stats-engine.ts
-
-import { StatEntry, StatType } from './types';
+import { StatEntry, StatType, StatCategory, STAT_TYPES } from './types';
 
 export interface CountStatSummary {
   unit: 'count';
@@ -18,11 +16,6 @@ export interface PercentageStatSummary {
 
 export type StatSummary = CountStatSummary | PercentageStatSummary;
 
-/**
- * Summarizes a set of stat entries for one specific stat type. Works
- * identically whether given entries from a single match or a
- * player's entire history — the caller decides what's included.
- */
 export function summarizeStat(statType: StatType, entries: StatEntry[]): StatSummary {
   const relevantEntries = entries.filter((entry) => entry.statTypeId === statType.id);
 
@@ -45,4 +38,22 @@ export function summarizeStat(statType: StatType, entries: StatEntry[]): StatSum
     outCount,
     percentage: totalAttempts === 0 ? null : Math.round((inCount / totalAttempts) * 100),
   };
+}
+
+/**
+ * Checks whether a stat of the given category has already been logged
+ * for a specific point. Categories are independent of one another —
+ * e.g. a Winner and a Break Point Won can both be logged for the same
+ * point, but two point-outcome stats (Winner + Unforced Error) cannot.
+ */
+export function hasLoggedCategoryForPoint(
+  category: StatCategory,
+  pointNumber: number,
+  entries: StatEntry[]
+): boolean {
+  return entries.some((entry) => {
+    if (entry.pointNumber !== pointNumber) return false;
+    const statType = STAT_TYPES.find((s) => s.id === entry.statTypeId);
+    return statType?.category === category;
+  });
 }

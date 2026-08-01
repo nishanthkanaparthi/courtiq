@@ -58,8 +58,8 @@ describe('handleGetPlayerStats', () => {
     await matchRepo.save(match1);
     await matchRepo.save(match2);
 
-    await statRepo.save(createStatEntry(match1.id, 'winners', 'occurred'));
-    await statRepo.save(createStatEntry(match2.id, 'winners', 'occurred'));
+    await statRepo.save(createStatEntry(match1.id, 'winners', 'occurred', 1));
+    await statRepo.save(createStatEntry(match2.id, 'winners', 'occurred', 1));
 
     const response = await handleGetPlayerStats('player-1', statRepo, matchRepo);
     const body = await response.json();

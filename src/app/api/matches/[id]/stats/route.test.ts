@@ -40,7 +40,7 @@ describe('handleLogStat', () => {
   it('returns 404 when the match does not exist', async () => {
     const request = new Request('http://localhost', {
       method: 'POST',
-      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred' }),
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
     });
 
     const response = await handleLogStat(
@@ -60,7 +60,7 @@ describe('handleLogStat', () => {
 
     const request = new Request('http://localhost', {
       method: 'POST',
-      body: JSON.stringify({ statTypeId: 'not-a-real-stat', outcome: 'occurred' }),
+      body: JSON.stringify({ statTypeId: 'not-a-real-stat', outcome: 'occurred', pointNumber: 1 }),
     });
 
     const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
@@ -75,7 +75,22 @@ describe('handleLogStat', () => {
 
     const request = new Request('http://localhost', {
       method: 'POST',
-      body: JSON.stringify({ statTypeId: 'winners', outcome: 'in' }),
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'in', pointNumber: 1 }),
+    });
+
+    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
+
+    expect(response.status).toBe(400);
+  });
+
+  it('returns 400 when pointNumber is missing', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const match = createMatch('player-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    const request = new Request('http://localhost', {
+      method: 'POST',
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred' }),
     });
 
     const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
@@ -90,7 +105,7 @@ describe('handleLogStat', () => {
 
     const request = new Request('http://localhost', {
       method: 'POST',
-      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred' }),
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
     });
 
     const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
@@ -98,6 +113,65 @@ describe('handleLogStat', () => {
 
     expect(response.status).toBe(201);
     expect(body.statTypeId).toBe('winners');
+    expect(body.pointNumber).toBe(1);
+  });
+
+  it('rejects a second point-outcome stat logged for the same point', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const statRepo = new FakeStatRepository();
+    const match = createMatch('player-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    await handleLogStat(
+      match.id,
+      new Request('http://localhost', {
+        method: 'POST',
+        body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
+      }),
+      statRepo,
+      matchRepo
+    );
+
+    const response = await handleLogStat(
+      match.id,
+      new Request('http://localhost', {
+        method: 'POST',
+        body: JSON.stringify({ statTypeId: 'unforced-errors', outcome: 'occurred', pointNumber: 1 }),
+      }),
+      statRepo,
+      matchRepo
+    );
+
+    expect(response.status).toBe(400);
+  });
+
+  it('allows a break-point stat and a point-outcome stat on the same point', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const statRepo = new FakeStatRepository();
+    const match = createMatch('player-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    await handleLogStat(
+      match.id,
+      new Request('http://localhost', {
+        method: 'POST',
+        body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
+      }),
+      statRepo,
+      matchRepo
+    );
+
+    const response = await handleLogStat(
+      match.id,
+      new Request('http://localhost', {
+        method: 'POST',
+        body: JSON.stringify({ statTypeId: 'break-points-won', outcome: 'occurred', pointNumber: 1 }),
+      }),
+      statRepo,
+      matchRepo
+    );
+
+    expect(response.status).toBe(201);
   });
 });
 
@@ -123,4 +197,4 @@ describe('handleGetMatchStats', () => {
     expect(response.status).toBe(200);
     expect(body.length).toBe(5);
   });
-}); 
+});

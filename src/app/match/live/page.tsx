@@ -4,25 +4,17 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Scoreboard } from '@/components/match/Scoreboard';
 import { PointControls } from '@/components/match/PointControls';
+import { QuickStatButtons } from '@/components/match/QuickStatButtons';
 import { Match, Side } from '@/features/matches/types';
 import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
-import { STAT_TYPES, StatOutcome } from '@/features/stats/types';
-import { Target, TriangleAlert, Zap, TrendingUp, CircleAlert, LucideIcon } from 'lucide-react';
-
-const STAT_ICONS: Record<string, LucideIcon> = {
-  'first-serve': Target,
-  'unforced-errors': TriangleAlert,
-  winners: Zap,
-  'break-points-won': TrendingUp,
-  'double-faults': CircleAlert,
-};
+import { StatOutcome } from '@/features/stats/types';
 
 export default function LiveMatchPage() {
   const [match, setMatch] = useState<Match | null>(null);
   const [opponentName, setOpponentName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedStatId, setSelectedStatId] = useState<string>(STAT_TYPES[0].id);
+  const [pointNumber, setPointNumber] = useState(1);
 
   async function startMatch() {
     if (opponentName.trim() === '') {
@@ -41,6 +33,7 @@ export default function LiveMatchPage() {
       }
       const newMatch: Match = await response.json();
       setMatch(newMatch);
+      setPointNumber(1);
     } catch {
       setError('Something went wrong starting the match.');
     } finally {
@@ -61,6 +54,7 @@ export default function LiveMatchPage() {
       }
       const updated: Match = await response.json();
       setMatch(updated);
+      setPointNumber((n) => n + 1);
     } catch {
       setError('Something went wrong recording that point.');
     }
@@ -88,19 +82,20 @@ export default function LiveMatchPage() {
     }
   }
 
-  async function logStat(outcome: StatOutcome) {
+  async function logStat(statTypeId: string, outcome: StatOutcome) {
     if (!match) return;
     setError(null);
     try {
       const response = await fetch(`/api/matches/${match.id}/stats`, {
         method: 'POST',
-        body: JSON.stringify({ statTypeId: selectedStatId, outcome }),
+        body: JSON.stringify({ statTypeId, outcome, pointNumber }),
       });
       if (!response.ok) {
-        throw new Error('Could not log that stat.');
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error ?? 'Could not log that stat.');
       }
-    } catch {
-      setError('Something went wrong logging that stat.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong logging that stat.');
     }
   }
 
@@ -141,53 +136,7 @@ export default function LiveMatchPage() {
       <PointControls onPointWon={logPoint} disabled={match.status !== 'in-progress'} />
 
       {match.status === 'in-progress' && (
-        <Card>
-          <label className="block text-xs text-stone-500 mb-2" htmlFor="statSelect">
-            Track a stat
-          </label>
-          <div className="flex items-center gap-2 mb-3">
-            {(() => {
-              const Icon = STAT_ICONS[selectedStatId] ?? Target;
-              return <Icon size={16} className="text-royal-light" />;
-            })()}
-            <select
-              id="statSelect"
-              value={selectedStatId}
-              onChange={(e) => setSelectedStatId(e.target.value)}
-              className="flex-1 rounded-lg border border-stone-300 px-3 py-2 text-sm"
-            >
-              {STAT_TYPES.map((statType) => (
-                <option key={statType.id} value={statType.id}>
-                  {statType.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {STAT_TYPES.find((s) => s.id === selectedStatId)?.unit === 'count' ? (
-            <button
-              onClick={() => logStat('occurred')}
-              className="w-full rounded-xl bg-royal-light text-white text-sm font-medium py-2.5 hover:bg-royal"
-            >
-              Log Occurrence
-            </button>
-          ) : (
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                onClick={() => logStat('in')}
-                className="rounded-xl bg-royal-light text-white text-sm font-medium py-2.5 hover:bg-royal"
-              >
-                Serve In
-              </button>
-              <button
-                onClick={() => logStat('out')}
-                className="rounded-xl bg-red-700 text-white text-sm font-medium py-2.5 hover:bg-red-800"
-              >
-                Serve Out
-              </button>
-            </div>
-          )}
-        </Card>
+        <QuickStatButtons onLogStat={logStat} disabled={match.status !== 'in-progress'} />
       )}
 
       {match.status === 'in-progress' && (

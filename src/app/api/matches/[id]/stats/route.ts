@@ -1,8 +1,6 @@
-// src/app/api/matches/[id]/stats/route.ts
-
 import { NextResponse } from 'next/server';
 import { STAT_TYPES, StatOutcome, createStatEntry } from '@/features/stats/types';
-import { summarizeStat } from '@/features/stats/stats-engine';
+import { summarizeStat, hasLoggedCategoryForPoint } from '@/features/stats/stats-engine';
 import { JsonStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
 import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 
@@ -42,7 +40,20 @@ export async function handleLogStat(
     );
   }
 
-  const entry = createStatEntry(matchId, statType.id, outcome);
+  const pointNumber = body.pointNumber;
+  if (typeof pointNumber !== 'number') {
+    return NextResponse.json({ error: 'pointNumber is required' }, { status: 400 });
+  }
+
+  const existingEntries = await statRepository.findByMatchId(matchId);
+  if (hasLoggedCategoryForPoint(statType.category, pointNumber, existingEntries)) {
+    return NextResponse.json(
+      { error: `A ${statType.category.replace('-', ' ')} stat has already been logged for this point` },
+      { status: 400 }
+    );
+  }
+
+  const entry = createStatEntry(matchId, statType.id, outcome, pointNumber);
   await statRepository.save(entry);
 
   return NextResponse.json(entry, { status: 201 });

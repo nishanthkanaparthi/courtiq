@@ -25,6 +25,7 @@ function buildEntry(overrides: Partial<StatEntry> = {}): StatEntry {
     matchId: 'match-1',
     statTypeId: 'unforced-errors',
     outcome: 'occurred',
+    pointNumber: 1,
     timestamp: new Date().toISOString(),
     ...overrides,
   };
