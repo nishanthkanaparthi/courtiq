@@ -44,3 +44,5 @@ export function createStatEntry(
     timestamp: new Date().toISOString(),
   };
 }
+
+export type StatSelections = Partial<Record<StatCategory, { statTypeId: string; outcome: StatOutcome }>>;

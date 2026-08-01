@@ -7,7 +7,7 @@ import { PointControls } from '@/components/match/PointControls';
 import { QuickStatButtons } from '@/components/match/QuickStatButtons';
 import { Match, Side } from '@/features/matches/types';
 import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
-import { StatOutcome } from '@/features/stats/types';
+import { StatOutcome, StatCategory, StatSelections } from '@/features/stats/types';
 
 export default function LiveMatchPage() {
   const [match, setMatch] = useState<Match | null>(null);
@@ -15,6 +15,7 @@ export default function LiveMatchPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pointNumber, setPointNumber] = useState(1);
+  const [statSelections, setStatSelections] = useState<StatSelections>({});
 
   async function startMatch() {
     if (opponentName.trim() === '') {
@@ -34,11 +35,25 @@ export default function LiveMatchPage() {
       const newMatch: Match = await response.json();
       setMatch(newMatch);
       setPointNumber(1);
+      setStatSelections({});
     } catch {
       setError('Something went wrong starting the match.');
     } finally {
       setIsLoading(false);
     }
+  }
+
+  function toggleStatSelection(statTypeId: string, outcome: StatOutcome, category: StatCategory) {
+    setStatSelections((prev) => {
+      const current = prev[category];
+      const isSame = current?.statTypeId === statTypeId && current?.outcome === outcome;
+      if (isSame) {
+        const next = { ...prev };
+        delete next[category];
+        return next;
+      }
+      return { ...prev, [category]: { statTypeId, outcome } };
+    });
   }
 
   async function logPoint(winner: Side) {
@@ -54,6 +69,28 @@ export default function LiveMatchPage() {
       }
       const updated: Match = await response.json();
       setMatch(updated);
+
+      // Submit any stats selected for the point that just concluded,
+      // tied to its point number (before it advances). Each is
+      // best-effort — a stat logging failure shouldn't block the
+      // match from continuing, since the point itself already saved.
+      const completedPointNumber = pointNumber;
+      for (const selection of Object.values(statSelections)) {
+        try {
+          await fetch(`/api/matches/${match.id}/stats`, {
+            method: 'POST',
+            body: JSON.stringify({
+              statTypeId: selection.statTypeId,
+              outcome: selection.outcome,
+              pointNumber: completedPointNumber,
+            }),
+          });
+        } catch {
+          // Non-blocking; the point has already been recorded.
+        }
+      }
+
+      setStatSelections({});
       setPointNumber((n) => n + 1);
     } catch {
       setError('Something went wrong recording that point.');
@@ -79,23 +116,6 @@ export default function LiveMatchPage() {
       setMatch(updated);
     } catch {
       setError('Something went wrong abandoning the match.');
-    }
-  }
-
-  async function logStat(statTypeId: string, outcome: StatOutcome) {
-    if (!match) return;
-    setError(null);
-    try {
-      const response = await fetch(`/api/matches/${match.id}/stats`, {
-        method: 'POST',
-        body: JSON.stringify({ statTypeId, outcome, pointNumber }),
-      });
-      if (!response.ok) {
-        const data = await response.json().catch(() => null);
-        throw new Error(data?.error ?? 'Could not log that stat.');
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong logging that stat.');
     }
   }
 
@@ -136,7 +156,11 @@ export default function LiveMatchPage() {
       <PointControls onPointWon={logPoint} disabled={match.status !== 'in-progress'} />
 
       {match.status === 'in-progress' && (
-        <QuickStatButtons onLogStat={logStat} disabled={match.status !== 'in-progress'} />
+        <QuickStatButtons
+          selections={statSelections}
+          onToggle={toggleStatSelection}
+          disabled={match.status !== 'in-progress'}
+        />
       )}
 
       {match.status === 'in-progress' && (
