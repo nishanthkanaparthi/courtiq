@@ -3,15 +3,15 @@
 import { NextResponse } from 'next/server';
 import { STAT_TYPES } from '@/features/stats/types';
 import { summarizeStat } from '@/features/stats/stats-engine';
-import { JsonStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
-import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
+import { PostgresStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
+import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 
 function getStatRepository(): StatRepository {
-  return new JsonStatRepository();
+  return new PostgresStatRepository();
 }
 
 function getMatchRepository(): MatchRepository {
-  return new JsonMatchRepository();
+  return new PostgresMatchRepository();
 }
 
 export async function handleGetPlayerStats(

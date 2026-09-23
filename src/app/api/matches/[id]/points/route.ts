@@ -1,12 +1,10 @@
-// src/app/api/matches/[id]/points/route.ts
-
 import { NextResponse } from 'next/server';
 import { recordPoint } from '@/features/matches/match-engine';
-import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
+import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { Side } from '@/features/matches/types';
 
 function getRepository(): MatchRepository {
-  return new JsonMatchRepository();
+  return new PostgresMatchRepository();
 }
 
 export async function handleRecordPoint(
