@@ -1,11 +1,9 @@
-// src/app/api/matches/[id]/route.ts
-
 import { NextResponse } from 'next/server';
 import { abandonMatch } from '@/features/matches/match-engine';
-import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
+import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 
 function getRepository(): MatchRepository {
-  return new JsonMatchRepository();
+  return new PostgresMatchRepository();
 }
 
 export async function handleAbandonMatch(matchId: string, repository: MatchRepository) {

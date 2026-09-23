@@ -1,11 +1,9 @@
-// src/app/api/matches/route.ts
-
 import { NextResponse } from 'next/server';
 import { createMatch } from '@/features/matches/types';
-import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
+import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 
 function getRepository(): MatchRepository {
-  return new JsonMatchRepository();
+  return new PostgresMatchRepository();
 }
 
 export async function handleCreateMatch(request: Request, repository: MatchRepository) {

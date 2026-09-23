@@ -10,4 +10,10 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 
-export default createJestConfig(customJestConfig);
+async function jestConfig() {
+  const config = await createJestConfig(customJestConfig)();
+  config.transformIgnorePatterns = ['/node_modules/(?!@prisma/client)'];
+  return config;
+}
+
+export default jestConfig;

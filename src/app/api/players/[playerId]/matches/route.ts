@@ -1,10 +1,10 @@
 // src/app/api/players/[playerId]/matches/route.ts
 
 import { NextResponse } from 'next/server';
-import { JsonMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
+import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 
 function getRepository(): MatchRepository {
-  return new JsonMatchRepository();
+  return new PostgresMatchRepository();
 }
 
 export async function handleGetPlayerMatches(playerId: string, repository: MatchRepository) {

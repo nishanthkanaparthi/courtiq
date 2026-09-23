@@ -2,48 +2,70 @@
  * @jest-environment node
  */
 
-import { POST as createMatch } from '../../route';
-import { POST as logPoint } from './route';
+import { handleRecordPoint } from './route';
+import { Match, createMatch } from '@/features/matches/types';
+import { MatchRepository } from '@/lib/repositories/match-repository';
 
-describe('POST /api/matches/:id/points', () => {
+class FakeMatchRepository implements MatchRepository {
+  private matches: Match[] = [];
+
+  async findById(id: string): Promise<Match | null> {
+    return this.matches.find((m) => m.id === id) ?? null;
+  }
+
+  async findByPlayerId(playerId: string): Promise<Match[]> {
+    return this.matches.filter((m) => m.playerId === playerId);
+  }
+
+  async save(match: Match): Promise<void> {
+    const index = this.matches.findIndex((m) => m.id === match.id);
+    if (index >= 0) {
+      this.matches[index] = match;
+    } else {
+      this.matches.push(match);
+    }
+  }
+}
+
+describe('handleRecordPoint', () => {
   it('returns 400 for an invalid winner value', async () => {
+    const repository = new FakeMatchRepository();
     const request = new Request('http://localhost/api/matches/123/points', {
       method: 'POST',
       body: JSON.stringify({ winner: 'nobody' }),
     });
 
-    const response = await logPoint(request, { params: Promise.resolve({ id: '123' }) });
+    const response = await handleRecordPoint(request, '123', repository);
 
     expect(response.status).toBe(400);
   });
 
   it('returns 404 when the match does not exist', async () => {
+    const repository = new FakeMatchRepository();
     const request = new Request('http://localhost/api/matches/nonexistent/points', {
       method: 'POST',
       body: JSON.stringify({ winner: 'player' }),
     });
 
-    const response = await logPoint(request, { params: Promise.resolve({ id: 'nonexistent' }) });
+    const response = await handleRecordPoint(request, 'nonexistent', repository);
 
     expect(response.status).toBe(404);
   });
 
   it('records a point on an existing match', async () => {
-    const createRequest = new Request('http://localhost/api/matches', {
-      method: 'POST',
-      body: JSON.stringify({ playerId: 'player-1', opponentName: 'Test Opponent' }),
-    });
-    const createResponse = await createMatch(createRequest);
-    const match = await createResponse.json();
+    const repository = new FakeMatchRepository();
+    const existingMatch = createMatch('player-1', 'Test Opponent');
+    await repository.save(existingMatch);
 
-    const pointRequest = new Request(`http://localhost/api/matches/${match.id}/points`, {
+    const request = new Request(`http://localhost/api/matches/${existingMatch.id}/points`, {
       method: 'POST',
       body: JSON.stringify({ winner: 'player' }),
     });
-    const pointResponse = await logPoint(pointRequest, { params: Promise.resolve({ id: match.id }) });
-    const updated = await pointResponse.json();
 
-    expect(pointResponse.status).toBe(200);
+    const response = await handleRecordPoint(request, existingMatch.id, repository);
+    const updated = await response.json();
+
+    expect(response.status).toBe(200);
     expect(updated.sets[0].games[0].score.player).toBe(15);
   });
 });
