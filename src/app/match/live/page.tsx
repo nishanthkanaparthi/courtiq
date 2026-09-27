@@ -6,7 +6,6 @@ import { Scoreboard } from '@/components/match/Scoreboard';
 import { PointControls } from '@/components/match/PointControls';
 import { QuickStatButtons } from '@/components/match/QuickStatButtons';
 import { Match, Side } from '@/features/matches/types';
-import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
 import { StatOutcome, StatCategory, StatSelections } from '@/features/stats/types';
 
 export default function LiveMatchPage() {
@@ -27,7 +26,7 @@ export default function LiveMatchPage() {
     try {
       const response = await fetch('/api/matches', {
         method: 'POST',
-        body: JSON.stringify({ playerId: PLACEHOLDER_PLAYER_ID, opponentName }),
+        body: JSON.stringify({ opponentName }),
       });
       if (!response.ok) {
         throw new Error('Could not start the match.');

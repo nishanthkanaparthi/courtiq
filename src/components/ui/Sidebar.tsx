@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LayoutDashboard, PlayCircle, History, BarChart3 } from 'lucide-react';
-import { PLACEHOLDER_PLAYER_NAME } from '@/features/players/constants';
+import { useSession, signOut } from 'next-auth/react';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -14,6 +14,15 @@ const NAV_ITEMS = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+
+  const coachName = session?.user?.name ?? 'Coach';
+  const initials = coachName
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
 
   return (
     <aside className="w-56 shrink-0 bg-royal min-h-screen flex flex-col p-4">
@@ -43,14 +52,22 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="border-t border-blue-800 pt-4 flex items-center gap-2 px-2">
-        <div className="w-8 h-8 rounded-full bg-royal-light flex items-center justify-center text-white text-xs font-medium">
-          {PLACEHOLDER_PLAYER_NAME.slice(0, 2).toUpperCase()}
+      <div className="border-t border-blue-800 pt-4 px-2">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-full bg-royal-light flex items-center justify-center text-white text-xs font-medium">
+            {initials}
+          </div>
+          <div>
+            <p className="text-white text-sm">{coachName}</p>
+            <p className="text-blue-200 text-xs">Coach</p>
+          </div>
         </div>
-        <div>
-          <p className="text-white text-sm">{PLACEHOLDER_PLAYER_NAME}</p>
-          <p className="text-blue-200 text-xs">Coach</p>
-        </div>
+        <button
+          onClick={() => signOut()}
+          className="text-xs text-blue-200 hover:text-white underline"
+        >
+          Sign out
+        </button>
       </div>
     </aside>
   );
