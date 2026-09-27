@@ -12,7 +12,7 @@ const customJestConfig = {
 
 async function jestConfig() {
   const config = await createJestConfig(customJestConfig)();
-  config.transformIgnorePatterns = ['/node_modules/(?!@prisma/client)'];
+  config.transformIgnorePatterns = [];
   return config;
 }
 
