@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { recordPoint } from '@/features/matches/match-engine';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { Side } from '@/features/matches/types';
+import { auth } from '@/auth';
 
 function getRepository(): MatchRepository {
   return new PostgresMatchRepository();
@@ -10,8 +11,13 @@ function getRepository(): MatchRepository {
 export async function handleRecordPoint(
   request: Request,
   matchId: string,
-  repository: MatchRepository
+  repository: MatchRepository,
+  coachId: string | undefined
 ) {
+  if (!coachId) {
+    return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+  }
+
   const body = await request.json();
   const winner = body.winner as Side | undefined;
 
@@ -26,6 +32,9 @@ export async function handleRecordPoint(
   if (!match) {
     return NextResponse.json({ error: 'Match not found' }, { status: 404 });
   }
+  if (match.playerId !== coachId) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  }
 
   const updated = recordPoint(match, winner);
   await repository.save(updated);
@@ -38,5 +47,6 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  return handleRecordPoint(request, id, getRepository());
+  const session = await auth();
+  return handleRecordPoint(request, id, getRepository(), session?.user?.id);
 }

@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { MatchListItem } from '@/components/match/MatchListItem';
 import { Match } from '@/features/matches/types';
-import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
 
 export default function HistoryPage() {
   const [matches, setMatches] = useState<Match[] | null>(null);
@@ -12,7 +11,7 @@ export default function HistoryPage() {
   useEffect(() => {
     async function loadMatches() {
       try {
-        const response = await fetch(`/api/players/${PLACEHOLDER_PLAYER_ID}/matches`);
+        const response = await fetch('/api/matches');
         if (!response.ok) {
           throw new Error('Could not load match history.');
         }

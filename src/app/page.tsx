@@ -8,10 +8,11 @@ import { MatchStats } from '@/components/match/MatchStats';
 import { Match } from '@/features/matches/types';
 import { summarizeMatches } from '@/features/matches/dashboard-summary';
 import { StatSummary } from '@/features/stats/stats-engine';
-import { PLACEHOLDER_PLAYER_ID, PLACEHOLDER_PLAYER_NAME } from '@/features/players/constants';
 import { CalendarDays, TrendingUp, Flame } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 
 export default function DashboardPage() {
+  const { data: session } = useSession();
   const [matches, setMatches] = useState<Match[] | null>(null);
   const [statSummaries, setStatSummaries] = useState<StatSummary[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -20,8 +21,8 @@ export default function DashboardPage() {
     async function loadDashboard() {
       try {
         const [matchesRes, statsRes] = await Promise.all([
-          fetch(`/api/players/${PLACEHOLDER_PLAYER_ID}/matches`),
-          fetch(`/api/players/${PLACEHOLDER_PLAYER_ID}/stats`),
+          fetch('/api/matches'),
+          fetch('/api/stats'),
         ]);
         if (!matchesRes.ok || !statsRes.ok) {
           throw new Error('Could not load dashboard.');
@@ -47,13 +48,14 @@ export default function DashboardPage() {
   const recentMatches = [...matches]
     .sort((a, b) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime())
     .slice(0, 3);
+  const coachName = session?.user?.name ?? 'Coach';
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div>
           <h1 className="text-2xl font-semibold text-royal">
-            Welcome back, {PLACEHOLDER_PLAYER_NAME}
+            Welcome back, {coachName}
           </h1>
           <p className="text-sm text-stone-500 mt-1">Track every match, one point at a time.</p>
         </div>

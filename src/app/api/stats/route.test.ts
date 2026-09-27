@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { handleGetPlayerStats } from './route';
+import { handleGetMyStats } from './route';
 import { Match, createMatch } from '@/features/matches/types';
 import { MatchRepository } from '@/lib/repositories/match-repository';
 import { StatEntry, createStatEntry } from '@/features/stats/types';
@@ -36,12 +36,22 @@ class FakeStatRepository implements StatRepository {
   }
 }
 
-describe('handleGetPlayerStats', () => {
-  it('returns a summary for every stat type even with no matches', async () => {
-    const response = await handleGetPlayerStats(
-      'player-1',
+describe('handleGetMyStats', () => {
+  it('returns 401 when there is no authenticated coach', async () => {
+    const response = await handleGetMyStats(
       new FakeStatRepository(),
-      new FakeMatchRepository()
+      new FakeMatchRepository(),
+      undefined
+    );
+
+    expect(response.status).toBe(401);
+  });
+
+  it('returns a summary for every stat type, even with no matches', async () => {
+    const response = await handleGetMyStats(
+      new FakeStatRepository(),
+      new FakeMatchRepository(),
+      'coach-1'
     );
     const body = await response.json();
 
@@ -49,22 +59,41 @@ describe('handleGetPlayerStats', () => {
     expect(body.length).toBe(5);
   });
 
-  it('aggregates stat entries across all of a players matches', async () => {
+  it('aggregates stats across all of the requesting coach\'s matches', async () => {
     const matchRepo = new FakeMatchRepository();
     const statRepo = new FakeStatRepository();
 
-    const match1 = createMatch('player-1', 'Opponent A');
-    const match2 = createMatch('player-1', 'Opponent B');
+    const match1 = createMatch('coach-1', 'Opponent A');
+    const match2 = createMatch('coach-1', 'Opponent B');
     await matchRepo.save(match1);
     await matchRepo.save(match2);
 
     await statRepo.save(createStatEntry(match1.id, 'winners', 'occurred', 1));
     await statRepo.save(createStatEntry(match2.id, 'winners', 'occurred', 1));
 
-    const response = await handleGetPlayerStats('player-1', statRepo, matchRepo);
+    const response = await handleGetMyStats(statRepo, matchRepo, 'coach-1');
     const body = await response.json();
 
-    const winnersSummary = body.find((s: { statTypeId: string }) => s.statTypeId === 'winners');
-    expect(winnersSummary.total).toBe(2);
+    const winners = body.find((s: { statTypeId: string }) => s.statTypeId === 'winners');
+    expect(winners.total).toBe(2);
+  });
+
+  it("never includes another coach's matches in the aggregate", async () => {
+    const matchRepo = new FakeMatchRepository();
+    const statRepo = new FakeStatRepository();
+
+    const myMatch = createMatch('coach-1', 'Opponent A');
+    const otherCoachMatch = createMatch('coach-2', 'Opponent B');
+    await matchRepo.save(myMatch);
+    await matchRepo.save(otherCoachMatch);
+
+    await statRepo.save(createStatEntry(myMatch.id, 'winners', 'occurred', 1));
+    await statRepo.save(createStatEntry(otherCoachMatch.id, 'winners', 'occurred', 1));
+
+    const response = await handleGetMyStats(statRepo, matchRepo, 'coach-1');
+    const body = await response.json();
+
+    const winners = body.find((s: { statTypeId: string }) => s.statTypeId === 'winners');
+    expect(winners.total).toBe(1);
   });
 });

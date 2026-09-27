@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { MatchStats } from '@/components/match/MatchStats';
 import { StatSummary } from '@/features/stats/stats-engine';
-import { PLACEHOLDER_PLAYER_ID } from '@/features/players/constants';
 
 export default function AnalyticsPage() {
   const [summaries, setSummaries] = useState<StatSummary[] | null>(null);
@@ -12,7 +11,7 @@ export default function AnalyticsPage() {
   useEffect(() => {
     async function loadStats() {
       try {
-        const response = await fetch(`/api/players/${PLACEHOLDER_PLAYER_ID}/stats`);
+        const response = await fetch('/api/stats');
         if (!response.ok) {
           throw new Error('Could not load analytics.');
         }

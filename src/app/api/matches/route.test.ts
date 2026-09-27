@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { handleCreateMatch } from './route';
+import { handleCreateMatch, handleGetMyMatches } from './route';
 import { Match } from '@/features/matches/types';
 import { MatchRepository } from '@/lib/repositories/match-repository';
 
@@ -28,40 +28,75 @@ class FakeMatchRepository implements MatchRepository {
 }
 
 describe('handleCreateMatch', () => {
-  it('returns 400 when playerId is missing', async () => {
+  it('returns 401 when there is no authenticated coach', async () => {
     const request = new Request('http://localhost/api/matches', {
       method: 'POST',
       body: JSON.stringify({ opponentName: 'Test Opponent' }),
     });
 
-    const response = await handleCreateMatch(request, new FakeMatchRepository());
+    const response = await handleCreateMatch(request, new FakeMatchRepository(), undefined);
 
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(401);
   });
 
   it('returns 400 when opponentName is missing', async () => {
     const request = new Request('http://localhost/api/matches', {
       method: 'POST',
-      body: JSON.stringify({ playerId: 'player-1' }),
+      body: JSON.stringify({}),
     });
 
-    const response = await handleCreateMatch(request, new FakeMatchRepository());
+    const response = await handleCreateMatch(request, new FakeMatchRepository(), 'coach-1');
 
     expect(response.status).toBe(400);
   });
 
-  it('creates a match and returns 201 with valid input', async () => {
+  it('creates a match owned by the authenticated coach', async () => {
     const request = new Request('http://localhost/api/matches', {
       method: 'POST',
-      body: JSON.stringify({ playerId: 'player-1', opponentName: 'Test Opponent' }),
+      body: JSON.stringify({ opponentName: 'Test Opponent' }),
     });
 
-    const response = await handleCreateMatch(request, new FakeMatchRepository());
-    const body = await response.json();
+    const response = await handleCreateMatch(request, new FakeMatchRepository(), 'coach-1');
+    const match = await response.json();
 
     expect(response.status).toBe(201);
-    expect(body.playerId).toBe('player-1');
-    expect(body.opponentName).toBe('Test Opponent');
-    expect(body.status).toBe('in-progress');
+    expect(match.playerId).toBe('coach-1');
+    expect(match.opponentName).toBe('Test Opponent');
+  });
+});
+
+describe('handleGetMyMatches', () => {
+  it('returns 401 when there is no authenticated coach', async () => {
+    const response = await handleGetMyMatches(new FakeMatchRepository(), undefined);
+
+    expect(response.status).toBe(401);
+  });
+
+  it("returns only the authenticated coach's own matches", async () => {
+    const repository = new FakeMatchRepository();
+
+    await handleCreateMatch(
+      new Request('http://localhost/api/matches', {
+        method: 'POST',
+        body: JSON.stringify({ opponentName: 'Opponent A' }),
+      }),
+      repository,
+      'coach-1'
+    );
+    await handleCreateMatch(
+      new Request('http://localhost/api/matches', {
+        method: 'POST',
+        body: JSON.stringify({ opponentName: 'Opponent B' }),
+      }),
+      repository,
+      'coach-2'
+    );
+
+    const response = await handleGetMyMatches(repository, 'coach-1');
+    const matches = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(matches.length).toBe(1);
+    expect(matches[0].opponentName).toBe('Opponent A');
   });
 });

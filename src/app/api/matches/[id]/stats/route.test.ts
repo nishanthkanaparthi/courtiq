@@ -37,6 +37,23 @@ class FakeStatRepository implements StatRepository {
 }
 
 describe('handleLogStat', () => {
+  it('returns 401 when there is no authenticated coach', async () => {
+    const request = new Request('http://localhost', {
+      method: 'POST',
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
+    });
+
+    const response = await handleLogStat(
+      '123',
+      request,
+      new FakeStatRepository(),
+      new FakeMatchRepository(),
+      undefined
+    );
+
+    expect(response.status).toBe(401);
+  });
+
   it('returns 404 when the match does not exist', async () => {
     const request = new Request('http://localhost', {
       method: 'POST',
@@ -47,60 +64,16 @@ describe('handleLogStat', () => {
       'nonexistent',
       request,
       new FakeStatRepository(),
-      new FakeMatchRepository()
+      new FakeMatchRepository(),
+      'coach-1'
     );
 
     expect(response.status).toBe(404);
   });
 
-  it('returns 400 for an unknown statTypeId', async () => {
+  it('returns 403 when the match belongs to a different coach', async () => {
     const matchRepo = new FakeMatchRepository();
-    const match = createMatch('player-1', 'Test Opponent');
-    await matchRepo.save(match);
-
-    const request = new Request('http://localhost', {
-      method: 'POST',
-      body: JSON.stringify({ statTypeId: 'not-a-real-stat', outcome: 'occurred', pointNumber: 1 }),
-    });
-
-    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
-
-    expect(response.status).toBe(400);
-  });
-
-  it('returns 400 when the outcome does not match the stat unit', async () => {
-    const matchRepo = new FakeMatchRepository();
-    const match = createMatch('player-1', 'Test Opponent');
-    await matchRepo.save(match);
-
-    const request = new Request('http://localhost', {
-      method: 'POST',
-      body: JSON.stringify({ statTypeId: 'winners', outcome: 'in', pointNumber: 1 }),
-    });
-
-    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
-
-    expect(response.status).toBe(400);
-  });
-
-  it('returns 400 when pointNumber is missing', async () => {
-    const matchRepo = new FakeMatchRepository();
-    const match = createMatch('player-1', 'Test Opponent');
-    await matchRepo.save(match);
-
-    const request = new Request('http://localhost', {
-      method: 'POST',
-      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred' }),
-    });
-
-    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
-
-    expect(response.status).toBe(400);
-  });
-
-  it('logs a valid stat entry', async () => {
-    const matchRepo = new FakeMatchRepository();
-    const match = createMatch('player-1', 'Test Opponent');
+    const match = createMatch('coach-1', 'Test Opponent');
     await matchRepo.save(match);
 
     const request = new Request('http://localhost', {
@@ -108,7 +81,67 @@ describe('handleLogStat', () => {
       body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
     });
 
-    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo);
+    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo, 'coach-2');
+
+    expect(response.status).toBe(403);
+  });
+
+  it('returns 400 for an unknown statTypeId', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const match = createMatch('coach-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    const request = new Request('http://localhost', {
+      method: 'POST',
+      body: JSON.stringify({ statTypeId: 'not-a-real-stat', outcome: 'occurred', pointNumber: 1 }),
+    });
+
+    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo, 'coach-1');
+
+    expect(response.status).toBe(400);
+  });
+
+  it('returns 400 when the outcome does not match the stat unit', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const match = createMatch('coach-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    const request = new Request('http://localhost', {
+      method: 'POST',
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'in', pointNumber: 1 }),
+    });
+
+    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo, 'coach-1');
+
+    expect(response.status).toBe(400);
+  });
+
+  it('returns 400 when pointNumber is missing', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const match = createMatch('coach-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    const request = new Request('http://localhost', {
+      method: 'POST',
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred' }),
+    });
+
+    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo, 'coach-1');
+
+    expect(response.status).toBe(400);
+  });
+
+  it('logs a valid stat entry', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const match = createMatch('coach-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    const request = new Request('http://localhost', {
+      method: 'POST',
+      body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
+    });
+
+    const response = await handleLogStat(match.id, request, new FakeStatRepository(), matchRepo, 'coach-1');
     const body = await response.json();
 
     expect(response.status).toBe(201);
@@ -119,7 +152,7 @@ describe('handleLogStat', () => {
   it('rejects a second point-outcome stat logged for the same point', async () => {
     const matchRepo = new FakeMatchRepository();
     const statRepo = new FakeStatRepository();
-    const match = createMatch('player-1', 'Test Opponent');
+    const match = createMatch('coach-1', 'Test Opponent');
     await matchRepo.save(match);
 
     await handleLogStat(
@@ -129,7 +162,8 @@ describe('handleLogStat', () => {
         body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
       }),
       statRepo,
-      matchRepo
+      matchRepo,
+      'coach-1'
     );
 
     const response = await handleLogStat(
@@ -139,7 +173,8 @@ describe('handleLogStat', () => {
         body: JSON.stringify({ statTypeId: 'unforced-errors', outcome: 'occurred', pointNumber: 1 }),
       }),
       statRepo,
-      matchRepo
+      matchRepo,
+      'coach-1'
     );
 
     expect(response.status).toBe(400);
@@ -148,7 +183,7 @@ describe('handleLogStat', () => {
   it('allows a break-point stat and a point-outcome stat on the same point', async () => {
     const matchRepo = new FakeMatchRepository();
     const statRepo = new FakeStatRepository();
-    const match = createMatch('player-1', 'Test Opponent');
+    const match = createMatch('coach-1', 'Test Opponent');
     await matchRepo.save(match);
 
     await handleLogStat(
@@ -158,7 +193,8 @@ describe('handleLogStat', () => {
         body: JSON.stringify({ statTypeId: 'winners', outcome: 'occurred', pointNumber: 1 }),
       }),
       statRepo,
-      matchRepo
+      matchRepo,
+      'coach-1'
     );
 
     const response = await handleLogStat(
@@ -168,7 +204,8 @@ describe('handleLogStat', () => {
         body: JSON.stringify({ statTypeId: 'break-points-won', outcome: 'occurred', pointNumber: 1 }),
       }),
       statRepo,
-      matchRepo
+      matchRepo,
+      'coach-1'
     );
 
     expect(response.status).toBe(201);
@@ -176,22 +213,44 @@ describe('handleLogStat', () => {
 });
 
 describe('handleGetMatchStats', () => {
+  it('returns 401 when there is no authenticated coach', async () => {
+    const response = await handleGetMatchStats(
+      '123',
+      new FakeStatRepository(),
+      new FakeMatchRepository(),
+      undefined
+    );
+
+    expect(response.status).toBe(401);
+  });
+
   it('returns 404 when the match does not exist', async () => {
     const response = await handleGetMatchStats(
       'nonexistent',
       new FakeStatRepository(),
-      new FakeMatchRepository()
+      new FakeMatchRepository(),
+      'coach-1'
     );
 
     expect(response.status).toBe(404);
   });
 
-  it('returns a summary for every stat type', async () => {
+  it('returns 403 when the match belongs to a different coach', async () => {
     const matchRepo = new FakeMatchRepository();
-    const match = createMatch('player-1', 'Test Opponent');
+    const match = createMatch('coach-1', 'Test Opponent');
     await matchRepo.save(match);
 
-    const response = await handleGetMatchStats(match.id, new FakeStatRepository(), matchRepo);
+    const response = await handleGetMatchStats(match.id, new FakeStatRepository(), matchRepo, 'coach-2');
+
+    expect(response.status).toBe(403);
+  });
+
+  it('returns a summary for every stat type', async () => {
+    const matchRepo = new FakeMatchRepository();
+    const match = createMatch('coach-1', 'Test Opponent');
+    await matchRepo.save(match);
+
+    const response = await handleGetMatchStats(match.id, new FakeStatRepository(), matchRepo, 'coach-1');
     const body = await response.json();
 
     expect(response.status).toBe(200);
