@@ -3,6 +3,7 @@ import { STAT_TYPES, StatOutcome, createStatEntry } from '@/features/stats/types
 import { summarizeStat, hasLoggedCategoryForPoint } from '@/features/stats/stats-engine';
 import { PostgresStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
+import { auth } from '@/auth';
 
 function getStatRepository(): StatRepository {
   return new PostgresStatRepository();
@@ -16,11 +17,19 @@ export async function handleLogStat(
   matchId: string,
   request: Request,
   statRepository: StatRepository,
-  matchRepository: MatchRepository
+  matchRepository: MatchRepository,
+  coachId: string | undefined
 ) {
+  if (!coachId) {
+    return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+  }
+
   const match = await matchRepository.findById(matchId);
   if (!match) {
     return NextResponse.json({ error: 'Match not found' }, { status: 404 });
+  }
+  if (match.playerId !== coachId) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
   const body = await request.json();
@@ -62,11 +71,19 @@ export async function handleLogStat(
 export async function handleGetMatchStats(
   matchId: string,
   statRepository: StatRepository,
-  matchRepository: MatchRepository
+  matchRepository: MatchRepository,
+  coachId: string | undefined
 ) {
+  if (!coachId) {
+    return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
+  }
+
   const match = await matchRepository.findById(matchId);
   if (!match) {
     return NextResponse.json({ error: 'Match not found' }, { status: 404 });
+  }
+  if (match.playerId !== coachId) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
   const entries = await statRepository.findByMatchId(matchId);
@@ -80,7 +97,8 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  return handleLogStat(id, request, getStatRepository(), getMatchRepository());
+  const session = await auth();
+  return handleLogStat(id, request, getStatRepository(), getMatchRepository(), session?.user?.id);
 }
 
 export async function GET(
@@ -88,5 +106,6 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  return handleGetMatchStats(id, getStatRepository(), getMatchRepository());
+  const session = await auth();
+  return handleGetMatchStats(id, getStatRepository(), getMatchRepository(), session?.user?.id);
 }
