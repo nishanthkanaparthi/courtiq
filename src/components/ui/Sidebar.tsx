@@ -6,7 +6,7 @@ import { LayoutDashboard, PlayCircle, History, BarChart3 } from 'lucide-react';
 import { useSession, signOut } from 'next-auth/react';
 
 const NAV_ITEMS = [
-  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/match/live', label: 'Live Match', icon: PlayCircle },
   { href: '/history', label: 'History', icon: History },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },
@@ -15,6 +15,10 @@ const NAV_ITEMS = [
 export function Sidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+
+  if (pathname === '/' || pathname === '/signin') {
+    return null;
+  }
 
   const coachName = session?.user?.name ?? 'Coach';
   const initials = coachName
@@ -33,7 +37,7 @@ export function Sidebar() {
 
       <nav className="space-y-1 flex-1">
         {NAV_ITEMS.map((item) => {
-          const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+          const isActive = pathname.startsWith(item.href);
           const Icon = item.icon;
           return (
             <Link
