@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { abandonMatch } from '@/features/matches/match-engine';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { auth } from '@/auth';
+import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getRepository(): MatchRepository {
   return new PostgresMatchRepository();
@@ -37,15 +38,6 @@ export async function handleAbandonMatch(
   return NextResponse.json(updated, { status: 200 });
 }
 
-export async function PATCH(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const session = await auth();
-  return handleAbandonMatch(id, getRepository(), session?.user?.id);
-}
-
 export async function handleGetMatch(
   matchId: string,
   repository: MatchRepository,
@@ -66,11 +58,20 @@ export async function handleGetMatch(
   return NextResponse.json(match, { status: 200 });
 }
 
-export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const session = await auth();
-  return handleGetMatch(id, getRepository(), session?.user?.id);
-}
+export const PATCH = withErrorLogging(
+  'PATCH /api/matches/[id]',
+  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
+    const session = await auth();
+    return handleAbandonMatch(id, getRepository(), session?.user?.id);
+  }
+);
+
+export const GET = withErrorLogging(
+  'GET /api/matches/[id]',
+  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
+    const session = await auth();
+    return handleGetMatch(id, getRepository(), session?.user?.id);
+  }
+);

@@ -3,6 +3,7 @@ import { recordPoint } from '@/features/matches/match-engine';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { Side } from '@/features/matches/types';
 import { auth } from '@/auth';
+import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getRepository(): MatchRepository {
   return new PostgresMatchRepository();
@@ -42,11 +43,11 @@ export async function handleRecordPoint(
   return NextResponse.json(updated, { status: 200 });
 }
 
-export async function POST(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const session = await auth();
-  return handleRecordPoint(request, id, getRepository(), session?.user?.id);
-}
+export const POST = withErrorLogging(
+  'POST /api/matches/[id]/points',
+  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
+    const session = await auth();
+    return handleRecordPoint(request, id, getRepository(), session?.user?.id);
+  }
+);

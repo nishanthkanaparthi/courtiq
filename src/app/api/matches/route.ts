@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createMatch } from '@/features/matches/types';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { auth } from '@/auth';
+import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getRepository(): MatchRepository {
   return new PostgresMatchRepository();
@@ -37,12 +38,12 @@ export async function handleGetMyMatches(repository: MatchRepository, coachId: s
   return NextResponse.json(matches, { status: 200 });
 }
 
-export async function POST(request: Request) {
+export const POST = withErrorLogging('POST /api/matches', async (request: Request) => {
   const session = await auth();
   return handleCreateMatch(request, getRepository(), session?.user?.id);
-}
+});
 
-export async function GET() {
+export const GET = withErrorLogging('GET /api/matches', async () => {
   const session = await auth();
   return handleGetMyMatches(getRepository(), session?.user?.id);
-}
+});

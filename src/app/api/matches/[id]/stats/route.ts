@@ -4,6 +4,7 @@ import { summarizeStat, hasLoggedCategoryForPoint } from '@/features/stats/stats
 import { PostgresStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { auth } from '@/auth';
+import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getStatRepository(): StatRepository {
   return new PostgresStatRepository();
@@ -92,20 +93,20 @@ export async function handleGetMatchStats(
   return NextResponse.json(summaries, { status: 200 });
 }
 
-export async function POST(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const session = await auth();
-  return handleLogStat(id, request, getStatRepository(), getMatchRepository(), session?.user?.id);
-}
+export const POST = withErrorLogging(
+  'POST /api/matches/[id]/stats',
+  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
+    const session = await auth();
+    return handleLogStat(id, request, getStatRepository(), getMatchRepository(), session?.user?.id);
+  }
+);
 
-export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params;
-  const session = await auth();
-  return handleGetMatchStats(id, getStatRepository(), getMatchRepository(), session?.user?.id);
-}
+export const GET = withErrorLogging(
+  'GET /api/matches/[id]/stats',
+  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
+    const session = await auth();
+    return handleGetMatchStats(id, getStatRepository(), getMatchRepository(), session?.user?.id);
+  }
+);

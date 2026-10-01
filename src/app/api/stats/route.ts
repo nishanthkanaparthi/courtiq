@@ -4,6 +4,7 @@ import { summarizeStat } from '@/features/stats/stats-engine';
 import { PostgresStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
 import { auth } from '@/auth';
+import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getStatRepository(): StatRepository {
   return new PostgresStatRepository();
@@ -31,7 +32,7 @@ export async function handleGetMyStats(
   return NextResponse.json(summaries, { status: 200 });
 }
 
-export async function GET() {
+export const GET = withErrorLogging('GET /api/stats', async () => {
   const session = await auth();
   return handleGetMyStats(getStatRepository(), getMatchRepository(), session?.user?.id);
-}
+});
