@@ -28,8 +28,8 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-base font-semibold text-royal mb-2">Who can see your data</h2>
           <p>
-            Each coach's matches and stats are private to that coach. Other
-            CourtIQ users cannot see your data.
+            Each coach&apos;s matches and stats are private to that coach.
+            Other CourtIQ users cannot see your data.
           </p>
         </section>
 
