@@ -67,7 +67,7 @@ export function Sidebar() {
           </div>
         </div>
         <button
-          onClick={() => signOut()}
+          onClick={() => signOut({ callbackUrl: '/' })}
           className="text-xs text-blue-200 hover:text-white underline"
         >
           Sign out
