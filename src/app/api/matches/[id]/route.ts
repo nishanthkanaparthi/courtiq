@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { abandonMatch } from '@/features/matches/match-engine';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
-import { auth } from '@/auth';
 import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getRepository(): MatchRepository {
@@ -60,18 +59,24 @@ export async function handleGetMatch(
 
 export const PATCH = withErrorLogging(
   'PATCH /api/matches/[id]',
-  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+  async (
+    coachId: string | undefined,
+    request: Request,
+    { params }: { params: Promise<{ id: string }> }
+  ) => {
     const { id } = await params;
-    const session = await auth();
-    return handleAbandonMatch(id, getRepository(), session?.user?.id);
+    return handleAbandonMatch(id, getRepository(), coachId);
   }
 );
 
 export const GET = withErrorLogging(
   'GET /api/matches/[id]',
-  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+  async (
+    coachId: string | undefined,
+    request: Request,
+    { params }: { params: Promise<{ id: string }> }
+  ) => {
     const { id } = await params;
-    const session = await auth();
-    return handleGetMatch(id, getRepository(), session?.user?.id);
+    return handleGetMatch(id, getRepository(), coachId);
   }
 );

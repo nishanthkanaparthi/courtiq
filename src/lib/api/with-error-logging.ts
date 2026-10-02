@@ -1,11 +1,35 @@
 import { NextResponse } from 'next/server';
+import { auth } from '@/auth';
+import { checkRateLimit } from '@/lib/rate-limit';
 
-type RouteHandler = (...args: never[]) => Promise<Response>;
+type InnerHandler<Args extends unknown[]> = (
+  coachId: string | undefined,
+  ...args: Args
+) => Promise<Response>;
 
-export function withErrorLogging<T extends RouteHandler>(routeName: string, handler: T): T {
-  return (async (...args: Parameters<T>) => {
+export function withErrorLogging<Args extends unknown[]>(
+  routeName: string,
+  handler: InnerHandler<Args>
+) {
+  return async (...args: Args) => {
     try {
-      return await handler(...args);
+      const session = await auth();
+      const coachId = session?.user?.id;
+
+      if (coachId) {
+        const { allowed, remaining } = await checkRateLimit(coachId);
+        if (!allowed) {
+          return NextResponse.json(
+            { error: 'Too many requests. Please slow down.' },
+            { status: 429, headers: { 'X-RateLimit-Remaining': '0' } }
+          );
+        }
+        const response = await handler(coachId, ...args);
+        response.headers.set('X-RateLimit-Remaining', String(remaining));
+        return response;
+      }
+
+      return await handler(coachId, ...args);
     } catch (error) {
       console.error(`[${routeName}] Unhandled error:`, error);
       return NextResponse.json(
@@ -13,5 +37,5 @@ export function withErrorLogging<T extends RouteHandler>(routeName: string, hand
         { status: 500 }
       );
     }
-  }) as T;
+  };
 }

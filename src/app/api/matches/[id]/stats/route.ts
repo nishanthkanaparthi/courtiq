@@ -3,7 +3,6 @@ import { STAT_TYPES, StatOutcome, createStatEntry } from '@/features/stats/types
 import { summarizeStat, hasLoggedCategoryForPoint } from '@/features/stats/stats-engine';
 import { PostgresStatRepository, StatRepository } from '@/lib/repositories/stat-repository';
 import { PostgresMatchRepository, MatchRepository } from '@/lib/repositories/match-repository';
-import { auth } from '@/auth';
 import { withErrorLogging } from '@/lib/api/with-error-logging';
 
 function getStatRepository(): StatRepository {
@@ -95,18 +94,24 @@ export async function handleGetMatchStats(
 
 export const POST = withErrorLogging(
   'POST /api/matches/[id]/stats',
-  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+  async (
+    coachId: string | undefined,
+    request: Request,
+    { params }: { params: Promise<{ id: string }> }
+  ) => {
     const { id } = await params;
-    const session = await auth();
-    return handleLogStat(id, request, getStatRepository(), getMatchRepository(), session?.user?.id);
+    return handleLogStat(id, request, getStatRepository(), getMatchRepository(), coachId);
   }
 );
 
 export const GET = withErrorLogging(
   'GET /api/matches/[id]/stats',
-  async (request: Request, { params }: { params: Promise<{ id: string }> }) => {
+  async (
+    coachId: string | undefined,
+    request: Request,
+    { params }: { params: Promise<{ id: string }> }
+  ) => {
     const { id } = await params;
-    const session = await auth();
-    return handleGetMatchStats(id, getStatRepository(), getMatchRepository(), session?.user?.id);
+    return handleGetMatchStats(id, getStatRepository(), getMatchRepository(), coachId);
   }
 );
