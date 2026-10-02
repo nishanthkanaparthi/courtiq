@@ -34,7 +34,7 @@ describe('checkRateLimit', () => {
     const result = await checkRateLimit('coach-1');
 
     expect(result.allowed).toBe(true);
-    expect(result.remaining).toBe(59);
+    expect(result.remaining).toBe(119);
     expect(mockedPrisma.rateLimit.upsert).toHaveBeenCalled();
   });
 
@@ -48,7 +48,7 @@ describe('checkRateLimit', () => {
     const result = await checkRateLimit('coach-1');
 
     expect(result.allowed).toBe(true);
-    expect(result.remaining).toBe(49);
+    expect(result.remaining).toBe(109);
     expect(mockedPrisma.rateLimit.update).toHaveBeenCalledWith({
       where: { coachId: 'coach-1' },
       data: { count: { increment: 1 } },
@@ -58,7 +58,7 @@ describe('checkRateLimit', () => {
   it('denies a request at the limit within the window', async () => {
     mockedPrisma.rateLimit.findUnique.mockResolvedValue({
       coachId: 'coach-1',
-      count: 60,
+      count: 120,
       windowStart: new Date(),
     });
 
@@ -73,14 +73,14 @@ describe('checkRateLimit', () => {
     const expiredWindowStart = new Date(Date.now() - 70_000);
     mockedPrisma.rateLimit.findUnique.mockResolvedValue({
       coachId: 'coach-1',
-      count: 60,
+      count: 120,
       windowStart: expiredWindowStart,
     });
 
     const result = await checkRateLimit('coach-1');
 
     expect(result.allowed).toBe(true);
-    expect(result.remaining).toBe(59);
+    expect(result.remaining).toBe(119);
     expect(mockedPrisma.rateLimit.upsert).toHaveBeenCalled();
   });
 });

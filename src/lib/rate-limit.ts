@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/db/prisma-client';
 
 const WINDOW_MS = 60_000;
-const MAX_REQUESTS_PER_WINDOW = 60;
+const MAX_REQUESTS_PER_WINDOW = 120;
 
 export type RateLimitResult = {
   allowed: boolean;
